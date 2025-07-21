@@ -1,0 +1,904 @@
+ssh://lzz@211.87.232.120:22/data/lzz/anaconda2/envs/py37backup/bin/python3.7 -u /data/lzz/MedMNIST/MTL_MedMNIST/main.py
+{'as_rgb': False,
+ 'base_lr': 0.01,
+ 'dataset': 'organamnist',
+ 'depth': 3,
+ 'download': False,
+ 'eval_weights': None,
+ 'gamma': 0.5,
+ 'gpu_ids': '2',
+ 'hidden_dim': 512,
+ 'init_weights': None,
+ 'log_dir': './logs',
+ 'loss_type': 'softmax',
+ 'meta_batch_size': 128,
+ 'meta_epochs': 100,
+ 'meta_experts': 3,
+ 'meta_label': 'exp3_depth3_dim512',
+ 'meta_lr1': 0.0001,
+ 'meta_lr2': 0.001,
+ 'meta_task_size': 4,
+ 'meta_test_batch_size': 64,
+ 'meta_val_batch_size': 8,
+ 'model_flag': 'resnet18',
+ 'n_cntx_pts': 50,
+ 'norm_type': 'frn',
+ 'p_out': 0.1,
+ 'phase': 'meta_train',
+ 'pre_batch_size': 128,
+ 'pre_custom_momentum': 0.9,
+ 'pre_custom_weight_decay': 0.0005,
+ 'pre_epochs': 100,
+ 'pre_experts': 6,
+ 'pre_gamma': 0.2,
+ 'pre_lr': 0.01,
+ 'pre_step_size': 30,
+ 'resize': False,
+ 'seed': 0,
+ 'size': 28,
+ 'step_size': 5,
+ 'test_dataset': 'organcmnist',
+ 'time_stamp_meta': None,
+ 'time_stamp_pre': '250120_085711',
+ 'update_step': 10}
+Train Experts =>  [[4, 2, 1, 3, 0], [1, 0, 2], [3], [0], [2], [4], [0, 1, 2, 4], [0], [3], [1, 3, 0], [8, 7, 6, 9, 5], [8, 10, 5, 9, 7], [5, 9], [9, 6, 10, 5], [8, 10, 5, 7, 6, 9], [6, 7, 5, 8, 10], [10, 6, 7, 8, 9], [9, 7, 8, 6, 5, 10], [8, 9, 7, 6], [10, 6, 9]]
+Test Experts =>  [array([4]), array([0, 1, 4]), array([1, 0, 4]), array([0, 3, 2, 1]), array([3, 4]), array([ 6,  9, 10,  7]), array([6]), array([9]), array([ 7,  6, 10]), array([9])]
+==> Preparing data...
+encoder Total param 12565184
+base_learner Total param 532494
+dict_keys(['encoder.conv1.weight', 'encoder.bn1.tau', 'encoder.bn1.beta', 'encoder.bn1.gamma', 'encoder.layer1.0.conv1.weight', 'encoder.layer1.0.bn1.tau', 'encoder.layer1.0.bn1.beta', 'encoder.layer1.0.bn1.gamma', 'encoder.layer1.0.conv2.weight', 'encoder.layer1.0.bn2.tau', 'encoder.layer1.0.bn2.beta', 'encoder.layer1.0.bn2.gamma', 'encoder.layer1.1.conv1.weight', 'encoder.layer1.1.bn1.tau', 'encoder.layer1.1.bn1.beta', 'encoder.layer1.1.bn1.gamma', 'encoder.layer1.1.conv2.weight', 'encoder.layer1.1.bn2.tau', 'encoder.layer1.1.bn2.beta', 'encoder.layer1.1.bn2.gamma', 'encoder.layer2.0.conv1.weight', 'encoder.layer2.0.bn1.tau', 'encoder.layer2.0.bn1.beta', 'encoder.layer2.0.bn1.gamma', 'encoder.layer2.0.conv2.weight', 'encoder.layer2.0.bn2.tau', 'encoder.layer2.0.bn2.beta', 'encoder.layer2.0.bn2.gamma', 'encoder.layer2.0.shortcut.0.weight', 'encoder.layer2.0.shortcut.1.tau', 'encoder.layer2.0.shortcut.1.beta', 'encoder.layer2.0.shortcut.1.gamma', 'encoder.layer2.1.conv1.weight', 'encoder.layer2.1.bn1.tau', 'encoder.layer2.1.bn1.beta', 'encoder.layer2.1.bn1.gamma', 'encoder.layer2.1.conv2.weight', 'encoder.layer2.1.bn2.tau', 'encoder.layer2.1.bn2.beta', 'encoder.layer2.1.bn2.gamma', 'encoder.layer3.0.conv1.weight', 'encoder.layer3.0.bn1.tau', 'encoder.layer3.0.bn1.beta', 'encoder.layer3.0.bn1.gamma', 'encoder.layer3.0.conv2.weight', 'encoder.layer3.0.bn2.tau', 'encoder.layer3.0.bn2.beta', 'encoder.layer3.0.bn2.gamma', 'encoder.layer3.0.shortcut.0.weight', 'encoder.layer3.0.shortcut.1.tau', 'encoder.layer3.0.shortcut.1.beta', 'encoder.layer3.0.shortcut.1.gamma', 'encoder.layer3.1.conv1.weight', 'encoder.layer3.1.bn1.tau', 'encoder.layer3.1.bn1.beta', 'encoder.layer3.1.bn1.gamma', 'encoder.layer3.1.conv2.weight', 'encoder.layer3.1.bn2.tau', 'encoder.layer3.1.bn2.beta', 'encoder.layer3.1.bn2.gamma', 'encoder.layer4.0.conv1.weight', 'encoder.layer4.0.bn1.tau', 'encoder.layer4.0.bn1.beta', 'encoder.layer4.0.bn1.gamma', 'encoder.layer4.0.conv2.weight', 'encoder.layer4.0.bn2.tau', 'encoder.layer4.0.bn2.beta', 'encoder.layer4.0.bn2.gamma', 'encoder.layer4.0.shortcut.0.weight', 'encoder.layer4.0.shortcut.1.tau', 'encoder.layer4.0.shortcut.1.beta', 'encoder.layer4.0.shortcut.1.gamma', 'encoder.layer4.1.conv1.weight', 'encoder.layer4.1.bn1.tau', 'encoder.layer4.1.bn1.beta', 'encoder.layer4.1.bn1.gamma', 'encoder.layer4.1.conv2.weight', 'encoder.layer4.1.bn2.tau', 'encoder.layer4.1.bn2.beta', 'encoder.layer4.1.bn2.gamma'])
+dict_keys(['encoder.conv1.weight', 'encoder.bn1.tau', 'encoder.bn1.beta', 'encoder.bn1.gamma', 'encoder.layer1.0.conv1.weight', 'encoder.layer1.0.bn1.tau', 'encoder.layer1.0.bn1.beta', 'encoder.layer1.0.bn1.gamma', 'encoder.layer1.0.conv2.weight', 'encoder.layer1.0.bn2.tau', 'encoder.layer1.0.bn2.beta', 'encoder.layer1.0.bn2.gamma', 'encoder.layer1.1.conv1.weight', 'encoder.layer1.1.bn1.tau', 'encoder.layer1.1.bn1.beta', 'encoder.layer1.1.bn1.gamma', 'encoder.layer1.1.conv2.weight', 'encoder.layer1.1.bn2.tau', 'encoder.layer1.1.bn2.beta', 'encoder.layer1.1.bn2.gamma', 'encoder.layer2.0.conv1.weight', 'encoder.layer2.0.bn1.tau', 'encoder.layer2.0.bn1.beta', 'encoder.layer2.0.bn1.gamma', 'encoder.layer2.0.conv2.weight', 'encoder.layer2.0.bn2.tau', 'encoder.layer2.0.bn2.beta', 'encoder.layer2.0.bn2.gamma', 'encoder.layer2.0.shortcut.0.weight', 'encoder.layer2.0.shortcut.1.tau', 'encoder.layer2.0.shortcut.1.beta', 'encoder.layer2.0.shortcut.1.gamma', 'encoder.layer2.1.conv1.weight', 'encoder.layer2.1.bn1.tau', 'encoder.layer2.1.bn1.beta', 'encoder.layer2.1.bn1.gamma', 'encoder.layer2.1.conv2.weight', 'encoder.layer2.1.bn2.tau', 'encoder.layer2.1.bn2.beta', 'encoder.layer2.1.bn2.gamma', 'encoder.layer3.0.conv1.weight', 'encoder.layer3.0.bn1.tau', 'encoder.layer3.0.bn1.beta', 'encoder.layer3.0.bn1.gamma', 'encoder.layer3.0.conv2.weight', 'encoder.layer3.0.bn2.tau', 'encoder.layer3.0.bn2.beta', 'encoder.layer3.0.bn2.gamma', 'encoder.layer3.0.shortcut.0.weight', 'encoder.layer3.0.shortcut.1.tau', 'encoder.layer3.0.shortcut.1.beta', 'encoder.layer3.0.shortcut.1.gamma', 'encoder.layer3.1.conv1.weight', 'encoder.layer3.1.bn1.tau', 'encoder.layer3.1.bn1.beta', 'encoder.layer3.1.bn1.gamma', 'encoder.layer3.1.conv2.weight', 'encoder.layer3.1.bn2.tau', 'encoder.layer3.1.bn2.beta', 'encoder.layer3.1.bn2.gamma', 'encoder.layer4.0.conv1.weight', 'encoder.layer4.0.bn1.tau', 'encoder.layer4.0.bn1.beta', 'encoder.layer4.0.bn1.gamma', 'encoder.layer4.0.conv2.weight', 'encoder.layer4.0.bn2.tau', 'encoder.layer4.0.bn2.beta', 'encoder.layer4.0.bn2.gamma', 'encoder.layer4.0.shortcut.0.weight', 'encoder.layer4.0.shortcut.1.tau', 'encoder.layer4.0.shortcut.1.beta', 'encoder.layer4.0.shortcut.1.gamma', 'encoder.layer4.1.conv1.weight', 'encoder.layer4.1.bn1.tau', 'encoder.layer4.1.bn1.beta', 'encoder.layer4.1.bn1.gamma', 'encoder.layer4.1.conv2.weight', 'encoder.layer4.1.bn2.tau', 'encoder.layer4.1.bn2.beta', 'encoder.layer4.1.bn2.gamma'])
+Total param 13097678
+Total param 13097678
+Namespace(as_rgb=False, base_lr=0.01, dataset='organamnist', depth=3, download=False, eval_weights=None, gamma=0.5, gpu_ids='2', hidden_dim=512, init_weights=None, log_dir='./logs', loss_type='softmax', meta_batch_size=128, meta_epochs=100, meta_experts=3, meta_label='exp3_depth3_dim512', meta_lr1=0.0001, meta_lr2=0.001, meta_task_size=4, meta_test_batch_size=64, meta_val_batch_size=8, model_flag='resnet18', n_channels=1, n_cntx_pts=50, norm_type='frn', num_classes=11, p_out=0.1, phase='meta_train', pre_batch_size=128, pre_custom_momentum=0.9, pre_custom_weight_decay=0.0005, pre_epochs=100, pre_experts=6, pre_gamma=0.2, pre_lr=0.01, pre_step_size=30, resize=False, save_path='./logs/pre/organamnist/softmax/p0.1_seed0/preExp6_metaExp3//depth3_hid512/resnet18step5_gamma0.5_lr10.0001_lr20.001_epochs100_baselr0.01_updatestep10_stepsize5/250121_171324', seed=0, size=28, step_size=5, test_dataset='organcmnist', time_stamp_meta=None, time_stamp_pre='250120_085711', update_step=10)
+Namespace(as_rgb=False, base_lr=0.01, dataset='organamnist', depth=3, download=False, eval_weights=None, gamma=0.5, gpu_ids='2', hidden_dim=512, init_weights=None, log_dir='./logs', loss_type='softmax', meta_batch_size=128, meta_epochs=100, meta_experts=3, meta_label='exp3_depth3_dim512', meta_lr1=0.0001, meta_lr2=0.001, meta_task_size=4, meta_test_batch_size=64, meta_val_batch_size=8, model_flag='resnet18', n_channels=1, n_cntx_pts=50, norm_type='frn', num_classes=11, p_out=0.1, phase='meta_train', pre_batch_size=128, pre_custom_momentum=0.9, pre_custom_weight_decay=0.0005, pre_epochs=100, pre_experts=6, pre_gamma=0.2, pre_lr=0.01, pre_step_size=30, resize=False, save_path='./logs/pre/organamnist/softmax/p0.1_seed0/preExp6_metaExp3//depth3_hid512/resnet18step5_gamma0.5_lr10.0001_lr20.001_epochs100_baselr0.01_updatestep10_stepsize5/250121_171324', seed=0, size=28, step_size=5, test_dataset='organcmnist', time_stamp_meta=None, time_stamp_pre='250120_085711', update_step=10)
+/data/lzz/anaconda2/envs/py37backup/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:136: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+Epoch 1, Loss=0.9096 Acc=100.0000: 100%|██████| 271/271 [00:36<00:00,  7.47it/s]
+Epoch 1, Loss=0.9096 Acc=100.0000
+Epoch 1, Loss=0.9096 Acc=100.0000
+cov 4042/5193 sys_acc 98.266898 exp_acc 94.092077 clf_acc 99.455713 exp_acc_alone 72.578471 clf_acc_alone 97.804737 val_loss 4.227491 expert_0 95.629771 expert_1 96.710484 expert_2 88.235236
+测试
+cov 4520/6573 sys_acc 74.395253 exp_acc 60.058445 clf_acc 80.907078 exp_acc_alone 58.603377 clf_acc_alone 69.648562 val_loss 6.146659 expert_0 64.226502 expert_1 59.412760 expert_2 56.533318
+Epoch 1, Val, Loss=4.2275 Acc=98.2669
+Epoch 1, Val, Loss=4.2275 Acc=98.2669
+Epoch 2, Loss=2.6472 Acc=100.0000: 100%|██████| 271/271 [00:37<00:00,  7.23it/s]
+Epoch 2, Loss=2.6472 Acc=100.0000
+Epoch 2, Loss=2.6472 Acc=100.0000
+cov 3863/5193 sys_acc 98.420951 exp_acc 95.714271 clf_acc 99.352832 exp_acc_alone 72.154824 clf_acc_alone 97.708454 val_loss 4.265885 expert_0 93.749949 expert_1 97.920957 expert_2 95.010356
+测试
+cov 4606/6573 sys_acc 74.882093 exp_acc 62.633446 clf_acc 80.112894 exp_acc_alone 58.755515 clf_acc_alone 69.207363 val_loss 6.227494 expert_0 63.772436 expert_1 64.367795 expert_2 59.999983
+Epoch 2, Val, Loss=4.2659 Acc=98.4210
+Epoch 2, Val, Loss=4.2659 Acc=98.4210
+Epoch 3, Loss=2.7346 Acc=100.0000: 100%|██████| 271/271 [00:36<00:00,  7.41it/s]
+Epoch 3, Loss=2.7346 Acc=100.0000
+Epoch 3, Loss=2.7346 Acc=100.0000
+cov 3863/5193 sys_acc 98.420951 exp_acc 95.338332 clf_acc 99.482265 exp_acc_alone 71.172733 clf_acc_alone 97.862507 val_loss 4.176434 expert_0 94.396511 expert_1 95.026128 expert_2 96.487563
+测试
+cov 4424/6573 sys_acc 74.699528 exp_acc 61.563512 clf_acc 81.080468 exp_acc_alone 58.998935 clf_acc_alone 69.648562 val_loss 6.349110 expert_0 59.308794 expert_1 62.382848 expert_2 64.356410
+Epoch 3, Val, Loss=4.1764 Acc=98.4210
+Epoch 3, Val, Loss=4.1764 Acc=98.4210
+Epoch 4, Loss=2.3138 Acc=100.0000: 100%|██████| 271/271 [00:37<00:00,  7.21it/s]
+Epoch 4, Loss=2.3138 Acc=100.0000
+Epoch 4, Loss=2.3138 Acc=100.0000
+cov 3954/5193 sys_acc 98.478721 exp_acc 95.883762 clf_acc 99.291854 exp_acc_alone 70.537262 clf_acc_alone 97.746967 val_loss 4.189229 expert_0 95.150072 expert_1 96.446652 expert_2 96.116458
+测试
+cov 4516/6573 sys_acc 74.090978 exp_acc 61.594549 clf_acc 79.782992 exp_acc_alone 58.238247 clf_acc_alone 69.618135 val_loss 6.456211 expert_0 58.378363 expert_1 63.359980 expert_2 63.439288
+Epoch 4, Val, Loss=4.1892 Acc=98.4787
+Epoch 4, Val, Loss=4.1892 Acc=98.4787
+Epoch 5, Loss=0.5225 Acc=100.0000: 100%|██████| 271/271 [00:37<00:00,  7.25it/s]
+Epoch 5, Loss=0.5225 Acc=100.0000
+Epoch 5, Loss=0.5225 Acc=100.0000
+cov 3931/5193 sys_acc 98.478721 exp_acc 96.038020 clf_acc 99.262272 exp_acc_alone 72.039284 clf_acc_alone 97.631427 val_loss 4.293557 expert_0 97.582375 expert_1 93.023208 expert_2 97.142811
+测试
+cov 4519/6573 sys_acc 74.440895 exp_acc 63.826673 clf_acc 79.265322 exp_acc_alone 60.733303 clf_acc_alone 68.903088 val_loss 6.454627 expert_0 65.125478 expert_1 61.682224 expert_2 64.427461
+Epoch 5, Val, Loss=4.2936 Acc=98.4787
+Epoch 5, Val, Loss=4.2936 Acc=98.4787
+Epoch 6, Loss=8.0014 Acc=100.0000: 100%|██████| 271/271 [00:38<00:00,  7.09it/s]
+Epoch 6, Loss=8.0014 Acc=100.0000
+Epoch 6, Loss=8.0014 Acc=100.0000
+cov 3853/5193 sys_acc 98.420951 exp_acc 95.970135 clf_acc 99.273291 exp_acc_alone 71.865973 clf_acc_alone 97.650684 val_loss 4.284132 expert_0 95.796418 expert_1 96.708812 expert_2 95.537487
+测试
+cov 4389/6573 sys_acc 74.699528 exp_acc 63.369958 clf_acc 80.337205 exp_acc_alone 60.413814 clf_acc_alone 69.116081 val_loss 6.533541 expert_0 65.660361 expert_1 61.209421 expert_2 62.869181
+Epoch 6, Val, Loss=4.2841 Acc=98.4210
+Epoch 6, Val, Loss=4.2841 Acc=98.4210
+Epoch 7, Loss=5.0559 Acc=100.0000: 100%|██████| 271/271 [00:38<00:00,  7.12it/s]
+Epoch 7, Loss=5.0559 Acc=100.0000
+Epoch 7, Loss=5.0559 Acc=100.0000
+cov 3870/5193 sys_acc 98.440208 exp_acc 95.993939 clf_acc 99.276483 exp_acc_alone 73.367995 clf_acc_alone 97.727710 val_loss 4.267849 expert_0 95.215265 expert_1 96.453855 expert_2 96.265520
+测试
+cov 4516/6573 sys_acc 74.319185 exp_acc 63.052984 clf_acc 79.450840 exp_acc_alone 59.820478 clf_acc_alone 68.979157 val_loss 6.526745 expert_0 62.808826 expert_1 62.068946 expert_2 64.307673
+Epoch 7, Val, Loss=4.2678 Acc=98.4402
+Epoch 7, Val, Loss=4.2678 Acc=98.4402
+Epoch 8, Loss=0.6687 Acc=100.0000: 100%|██████| 271/271 [00:36<00:00,  7.34it/s]
+Epoch 8, Loss=0.6687 Acc=100.0000
+Epoch 8, Loss=0.6687 Acc=100.0000
+cov 3909/5193 sys_acc 98.382438 exp_acc 95.794378 clf_acc 99.232538 exp_acc_alone 72.520701 clf_acc_alone 97.535143 val_loss 4.158288 expert_0 95.041270 expert_1 94.736797 expert_2 97.216661
+测试
+cov 4576/6573 sys_acc 74.410467 exp_acc 61.692533 clf_acc 79.960663 exp_acc_alone 60.855013 clf_acc_alone 69.176936 val_loss 6.432745 expert_0 63.315910 expert_1 59.667656 expert_2 61.862896
+Epoch 8, Val, Loss=4.1583 Acc=98.3824
+Epoch 8, Val, Loss=4.1583 Acc=98.3824
+Epoch 9, Loss=7.1675 Acc=100.0000: 100%|██████| 271/271 [00:35<00:00,  7.58it/s]
+Epoch 9, Loss=7.1675 Acc=100.0000
+Epoch 9, Loss=7.1675 Acc=100.0000
+cov 3727/5193 sys_acc 98.343925 exp_acc 96.043643 clf_acc 99.248723 exp_acc_alone 72.809551 clf_acc_alone 97.573657 val_loss 4.245972 expert_0 95.807088 expert_1 96.229768 expert_2 96.064770
+测试
+cov 4474/6573 sys_acc 74.334398 exp_acc 62.696516 clf_acc 79.794366 exp_acc_alone 59.211928 clf_acc_alone 69.435570 val_loss 6.335567 expert_0 62.187481 expert_1 63.380265 expert_2 62.389362
+Epoch 9, Val, Loss=4.2460 Acc=98.3439
+Epoch 9, Val, Loss=4.2460 Acc=98.3439
+Epoch 10, Loss=5.0641 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.55it/s]
+Epoch 10, Loss=5.0641 Acc=100.0000
+Epoch 10, Loss=5.0641 Acc=100.0000
+Best Epoch 4, Best Val Acc=98.4787
+Best Epoch 4, Best Val Acc=98.4787
+cov 3906/5193 sys_acc 98.286154 exp_acc 94.871780 clf_acc 99.411160 exp_acc_alone 71.827460 clf_acc_alone 97.554400 val_loss 4.256775 expert_0 96.069827 expert_1 94.348848 expert_2 94.075785
+测试
+cov 4579/6573 sys_acc 73.710634 exp_acc 60.531589 clf_acc 79.449660 exp_acc_alone 58.557736 clf_acc_alone 69.253005 val_loss 6.612105 expert_0 61.806956 expert_1 63.480377 expert_2 56.150490
+Epoch 10, Val, Loss=4.2568 Acc=98.2862
+Epoch 10, Val, Loss=4.2568 Acc=98.2862
+Running Time: 18m, Estimated Time: 2.9h
+Running Time: 18m, Estimated Time: 2.9h
+Epoch 11, Loss=2.3102 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.56it/s]
+Epoch 11, Loss=2.3102 Acc=100.0000
+Epoch 11, Loss=2.3102 Acc=100.0000
+cov 3918/5193 sys_acc 98.594262 exp_acc 96.392142 clf_acc 99.310870 exp_acc_alone 73.887926 clf_acc_alone 97.689197 val_loss 4.285507 expert_0 96.690262 expert_1 96.144532 expert_2 96.338629
+测试
+cov 4522/6573 sys_acc 74.425681 exp_acc 63.481222 clf_acc 79.389649 exp_acc_alone 61.950403 clf_acc_alone 69.587707 val_loss 6.631144 expert_0 62.945717 expert_1 61.984714 expert_2 65.246321
+Epoch 11, Val, Loss=4.2855 Acc=98.5943
+Epoch 11, Val, Loss=4.2855 Acc=98.5943
+Epoch 12, Loss=0.5820 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.51it/s]
+Epoch 12, Loss=0.5820 Acc=100.0000
+Epoch 12, Loss=0.5820 Acc=100.0000
+cov 3926/5193 sys_acc 98.517235 exp_acc 95.895802 clf_acc 99.363217 exp_acc_alone 72.694011 clf_acc_alone 97.669940 val_loss 4.174567 expert_0 95.047125 expert_1 96.915117 expert_2 95.814936
+测试
+cov 4548/6573 sys_acc 74.349612 exp_acc 63.358018 clf_acc 79.243622 exp_acc_alone 59.866119 clf_acc_alone 69.298646 val_loss 6.631083 expert_0 63.027638 expert_1 60.557167 expert_2 66.615833
+Epoch 12, Val, Loss=4.1746 Acc=98.5172
+Epoch 12, Val, Loss=4.1746 Acc=98.5172
+Epoch 13, Loss=2.7638 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.71it/s]
+Epoch 13, Loss=2.7638 Acc=100.0000
+Epoch 13, Loss=2.7638 Acc=100.0000
+cov 3847/5193 sys_acc 98.709802 exp_acc 96.433864 clf_acc 99.506106 exp_acc_alone 74.119006 clf_acc_alone 97.708454 val_loss 4.275655 expert_0 96.130307 expert_1 96.976200 expert_2 96.173420
+测试
+cov 4493/6573 sys_acc 75.034231 exp_acc 64.519225 clf_acc 79.902068 exp_acc_alone 60.976723 clf_acc_alone 69.405142 val_loss 6.682082 expert_0 62.335506 expert_1 66.815456 expert_2 64.249984
+Epoch 13, Val, Loss=4.2757 Acc=98.7098
+Epoch 13, Val, Loss=4.2757 Acc=98.7098
+Epoch 14, Loss=2.8113 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.83it/s]
+Epoch 14, Loss=2.8113 Acc=100.0000
+Epoch 14, Loss=2.8113 Acc=100.0000
+cov 3930/5193 sys_acc 98.459465 exp_acc 96.199510 clf_acc 99.185748 exp_acc_alone 72.559214 clf_acc_alone 97.669940 val_loss 4.263586 expert_0 97.101402 expert_1 96.535752 expert_2 94.951877
+测试
+cov 4566/6573 sys_acc 74.395253 exp_acc 60.787239 clf_acc 80.376696 exp_acc_alone 58.588164 clf_acc_alone 69.511639 val_loss 6.552611 expert_0 61.210437 expert_1 62.057315 expert_2 59.243069
+Epoch 14, Val, Loss=4.2636 Acc=98.4595
+Epoch 14, Val, Loss=4.2636 Acc=98.4595
+Epoch 15, Loss=0.7083 Acc=100.0000: 100%|█████| 271/271 [00:30<00:00,  8.81it/s]
+Epoch 15, Loss=0.7083 Acc=100.0000
+Epoch 15, Loss=0.7083 Acc=100.0000
+cov 3904/5193 sys_acc 98.517235 exp_acc 95.965850 clf_acc 99.359629 exp_acc_alone 73.175428 clf_acc_alone 97.708454 val_loss 4.278587 expert_0 95.047125 expert_1 96.933917 expert_2 95.918324
+测试
+cov 4469/6573 sys_acc 74.593032 exp_acc 61.882123 clf_acc 80.577309 exp_acc_alone 61.341853 clf_acc_alone 69.633349 val_loss 6.637914 expert_0 64.510758 expert_1 61.669007 expert_2 60.075552
+Epoch 15, Val, Loss=4.2786 Acc=98.5172
+Epoch 15, Val, Loss=4.2786 Acc=98.5172
+Epoch 16, Loss=6.4385 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.45it/s]
+Epoch 16, Loss=6.4385 Acc=100.0000
+Epoch 16, Loss=6.4385 Acc=100.0000
+cov 3950/5193 sys_acc 98.459465 exp_acc 95.333854 clf_acc 99.443035 exp_acc_alone 73.117658 clf_acc_alone 97.669940 val_loss 4.214021 expert_0 96.583100 expert_1 93.302497 expert_2 96.226363
+测试
+cov 4552/6573 sys_acc 74.806025 exp_acc 62.444328 clf_acc 80.294374 exp_acc_alone 60.611593 clf_acc_alone 69.496425 val_loss 6.856321 expert_0 62.553784 expert_1 63.232944 expert_2 61.616144
+Epoch 16, Val, Loss=4.2140 Acc=98.4595
+Epoch 16, Val, Loss=4.2140 Acc=98.4595
+Epoch 17, Loss=0.4265 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.51it/s]
+Epoch 17, Loss=0.4265 Acc=100.0000
+Epoch 17, Loss=0.4265 Acc=100.0000
+cov 3877/5193 sys_acc 98.478721 exp_acc 95.440715 clf_acc 99.509928 exp_acc_alone 72.713268 clf_acc_alone 97.727710 val_loss 4.260928 expert_0 96.737007 expert_1 93.661928 expert_2 95.663905
+测试
+cov 4498/6573 sys_acc 74.669101 exp_acc 62.554211 clf_acc 80.257891 exp_acc_alone 60.337745 clf_acc_alone 69.876769 val_loss 6.763271 expert_0 65.537536 expert_1 61.171014 expert_2 61.044160
+Epoch 17, Val, Loss=4.2609 Acc=98.4787
+Epoch 17, Val, Loss=4.2609 Acc=98.4787
+Epoch 18, Loss=9.0613 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.30it/s]
+Epoch 18, Loss=9.0613 Acc=100.0000
+Epoch 18, Loss=9.0613 Acc=100.0000
+cov 3840/5193 sys_acc 98.382438 exp_acc 95.787126 clf_acc 99.296872 exp_acc_alone 73.791643 clf_acc_alone 97.708454 val_loss 4.251920 expert_0 96.100873 expert_1 95.338943 expert_2 95.955013
+测试
+cov 4598/6573 sys_acc 74.045337 exp_acc 60.759488 clf_acc 79.752064 exp_acc_alone 60.292104 clf_acc_alone 69.831127 val_loss 6.765349 expert_0 58.603046 expert_1 61.626231 expert_2 61.717595
+Epoch 18, Val, Loss=4.2519 Acc=98.3824
+Epoch 18, Val, Loss=4.2519 Acc=98.3824
+Epoch 19, Loss=5.7447 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.59it/s]
+Epoch 19, Loss=5.7447 Acc=100.0000
+Epoch 19, Loss=5.7447 Acc=100.0000
+cov 3951/5193 sys_acc 98.497978 exp_acc 95.652159 clf_acc 99.392556 exp_acc_alone 72.058540 clf_acc_alone 97.766224 val_loss 4.228432 expert_0 96.926668 expert_1 94.831992 expert_2 95.138845
+测试
+cov 4516/6573 sys_acc 74.197475 exp_acc 60.573645 clf_acc 80.403010 exp_acc_alone 58.070896 clf_acc_alone 69.846341 val_loss 6.498701 expert_0 59.271504 expert_1 60.055080 expert_2 62.173298
+Epoch 19, Val, Loss=4.2284 Acc=98.4980
+Epoch 19, Val, Loss=4.2284 Acc=98.4980
+Epoch 20, Loss=5.1783 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.50it/s]
+Epoch 20, Loss=5.1783 Acc=100.0000
+Epoch 20, Loss=5.1783 Acc=100.0000
+Best Epoch 13, Best Val Acc=98.7098
+Best Epoch 13, Best Val Acc=98.7098
+cov 3905/5193 sys_acc 98.459465 exp_acc 95.341600 clf_acc 99.487834 exp_acc_alone 70.883882 clf_acc_alone 97.727710 val_loss 4.228194 expert_0 94.430947 expert_1 95.631022 expert_2 95.896287
+测试
+cov 4573/6573 sys_acc 73.421573 exp_acc 59.199994 clf_acc 79.641372 exp_acc_alone 58.344744 clf_acc_alone 69.739845 val_loss 6.749461 expert_0 62.063714 expert_1 59.999985 expert_2 54.578735
+Epoch 20, Val, Loss=4.2282 Acc=98.4595
+Epoch 20, Val, Loss=4.2282 Acc=98.4595
+Running Time: 36m, Estimated Time: 3.0h
+Running Time: 36m, Estimated Time: 3.0h
+Epoch 21, Loss=8.0940 Acc=100.0000: 100%|█████| 271/271 [00:38<00:00,  7.12it/s]
+Epoch 21, Loss=8.0940 Acc=100.0000
+Epoch 21, Loss=8.0940 Acc=100.0000
+cov 3850/5193 sys_acc 98.517235 exp_acc 95.606836 clf_acc 99.532465 exp_acc_alone 72.308877 clf_acc_alone 97.746967 val_loss 4.240791 expert_0 96.894370 expert_1 94.155803 expert_2 95.728595
+测试
+cov 4517/6573 sys_acc 74.440895 exp_acc 60.457193 clf_acc 80.805843 exp_acc_alone 59.698768 clf_acc_alone 69.633349 val_loss 6.716960 expert_0 62.674942 expert_1 60.821901 expert_2 57.979485
+Epoch 21, Val, Loss=4.2408 Acc=98.5172
+Epoch 21, Val, Loss=4.2408 Acc=98.5172
+Epoch 22, Loss=3.3358 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.39it/s]
+Epoch 22, Loss=3.3358 Acc=100.0000
+Epoch 22, Loss=3.3358 Acc=100.0000
+cov 3946/5193 sys_acc 98.363181 exp_acc 94.947860 clf_acc 99.442471 exp_acc_alone 73.079145 clf_acc_alone 97.785480 val_loss 4.263029 expert_0 95.784498 expert_1 94.390198 expert_2 94.634100
+测试
+cov 4537/6573 sys_acc 74.456108 exp_acc 62.180740 clf_acc 79.964733 exp_acc_alone 60.550738 clf_acc_alone 69.435570 val_loss 6.746663 expert_0 61.551135 expert_1 63.121530 expert_2 61.756356
+Epoch 22, Val, Loss=4.2630 Acc=98.3632
+Epoch 22, Val, Loss=4.2630 Acc=98.3632
+Epoch 23, Loss=0.6160 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.53it/s]
+Epoch 23, Loss=0.6160 Acc=100.0000
+Epoch 23, Loss=0.6160 Acc=100.0000
+cov 3822/5193 sys_acc 98.632775 exp_acc 96.207134 clf_acc 99.502875 exp_acc_alone 73.599076 clf_acc_alone 97.746967 val_loss 4.279676 expert_0 95.522347 expert_1 96.255464 expert_2 96.874957
+测试
+cov 4439/6573 sys_acc 75.003803 exp_acc 63.495777 clf_acc 80.536155 exp_acc_alone 61.098433 clf_acc_alone 69.678990 val_loss 6.810309 expert_0 62.784794 expert_1 68.194052 expert_2 58.637854
+Epoch 23, Val, Loss=4.2797 Acc=98.6328
+Epoch 23, Val, Loss=4.2797 Acc=98.6328
+Epoch 24, Loss=5.6500 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.09it/s]
+Epoch 24, Loss=5.6500 Acc=100.0000
+Epoch 24, Loss=5.6500 Acc=100.0000
+cov 3930/5193 sys_acc 98.517235 exp_acc 95.803627 clf_acc 99.389310 exp_acc_alone 73.522049 clf_acc_alone 97.746967 val_loss 4.307719 expert_0 96.829221 expert_1 94.907363 expert_2 95.724420
+测试
+cov 4511/6573 sys_acc 73.741062 exp_acc 59.359839 clf_acc 80.314784 exp_acc_alone 57.294995 clf_acc_alone 69.678990 val_loss 6.646691 expert_0 61.234158 expert_1 61.290307 expert_2 55.267159
+Epoch 24, Val, Loss=4.3077 Acc=98.5172
+Epoch 24, Val, Loss=4.3077 Acc=98.5172
+Epoch 25, Loss=3.6436 Acc=100.0000: 100%|█████| 271/271 [00:32<00:00,  8.27it/s]
+Epoch 25, Loss=3.6436 Acc=100.0000
+Epoch 25, Loss=3.6436 Acc=100.0000
+cov 3886/5193 sys_acc 98.517235 exp_acc 96.250942 clf_acc 99.279462 exp_acc_alone 73.926439 clf_acc_alone 97.746967 val_loss 4.234338 expert_0 97.533589 expert_1 94.900180 expert_2 96.341416
+测试
+cov 4538/6573 sys_acc 74.745170 exp_acc 62.162156 clf_acc 80.387834 exp_acc_alone 60.033470 clf_acc_alone 69.557280 val_loss 6.796266 expert_0 66.040668 expert_1 58.187117 expert_2 62.499982
+Epoch 25, Val, Loss=4.2343 Acc=98.5172
+Epoch 25, Val, Loss=4.2343 Acc=98.5172
+Epoch 26, Loss=4.4338 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.47it/s]
+Epoch 26, Loss=4.4338 Acc=100.0000
+Epoch 26, Loss=4.4338 Acc=100.0000
+cov 3899/5193 sys_acc 98.440208 exp_acc 95.517760 clf_acc 99.410103 exp_acc_alone 72.809551 clf_acc_alone 97.708454 val_loss 4.246591 expert_0 96.376765 expert_1 93.887485 expert_2 96.178303
+测试
+cov 4533/6573 sys_acc 74.303971 exp_acc 61.274504 clf_acc 80.167658 exp_acc_alone 58.618591 clf_acc_alone 69.618135 val_loss 6.735557 expert_0 62.805852 expert_1 59.006193 expert_2 61.941236
+Epoch 26, Val, Loss=4.2466 Acc=98.4402
+Epoch 26, Val, Loss=4.2466 Acc=98.4402
+Epoch 27, Loss=6.5982 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.05it/s]
+Epoch 27, Loss=6.5982 Acc=100.0000
+Epoch 27, Loss=6.5982 Acc=100.0000
+cov 3891/5193 sys_acc 98.536491 exp_acc 95.775715 clf_acc 99.460290 exp_acc_alone 71.750433 clf_acc_alone 97.708454 val_loss 4.277719 expert_0 95.584947 expert_1 96.585319 expert_2 95.216358
+测试
+cov 4555/6573 sys_acc 73.984482 exp_acc 60.208121 clf_acc 80.087814 exp_acc_alone 58.238247 clf_acc_alone 69.435570 val_loss 6.845058 expert_0 59.097960 expert_1 60.242774 expert_2 61.173167
+Epoch 27, Val, Loss=4.2777 Acc=98.5365
+Epoch 27, Val, Loss=4.2777 Acc=98.5365
+Epoch 28, Loss=9.4687 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.35it/s]
+Epoch 28, Loss=9.4687 Acc=100.0000
+Epoch 28, Loss=9.4687 Acc=100.0000
+cov 3982/5193 sys_acc 98.459465 exp_acc 94.880249 clf_acc 99.547963 exp_acc_alone 70.960909 clf_acc_alone 97.689197 val_loss 4.131053 expert_0 95.595805 expert_1 94.444401 expert_2 94.656440
+测试
+cov 4559/6573 sys_acc 73.908413 exp_acc 60.278048 clf_acc 79.929807 exp_acc_alone 59.424920 clf_acc_alone 69.481211 val_loss 6.876908 expert_0 62.478163 expert_1 61.063026 expert_2 57.278463
+Epoch 28, Val, Loss=4.1311 Acc=98.4595
+Epoch 28, Val, Loss=4.1311 Acc=98.4595
+Epoch 29, Loss=6.6928 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.45it/s]
+Epoch 29, Loss=6.6928 Acc=100.0000
+Epoch 29, Loss=6.6928 Acc=100.0000
+cov 3888/5193 sys_acc 98.594262 exp_acc 95.862054 clf_acc 99.511314 exp_acc_alone 72.732525 clf_acc_alone 97.708454 val_loss 4.302898 expert_0 95.518823 expert_1 96.074340 expert_2 95.969725
+测试
+cov 4499/6573 sys_acc 74.060551 exp_acc 60.993244 clf_acc 80.084461 exp_acc_alone 59.105431 clf_acc_alone 69.557280 val_loss 6.844952 expert_0 60.410942 expert_1 62.038643 expert_2 60.774178
+Epoch 29, Val, Loss=4.3029 Acc=98.5943
+Epoch 29, Val, Loss=4.3029 Acc=98.5943
+Epoch 30, Loss=8.3127 Acc=100.0000: 100%|█████| 271/271 [00:32<00:00,  8.28it/s]
+Epoch 30, Loss=8.3127 Acc=100.0000
+Epoch 30, Loss=8.3127 Acc=100.0000
+Best Epoch 13, Best Val Acc=98.7098
+Best Epoch 13, Best Val Acc=98.7098
+cov 3877/5193 sys_acc 98.671288 exp_acc 96.580532 clf_acc 99.380962 exp_acc_alone 72.636241 clf_acc_alone 97.669940 val_loss 4.232738 expert_0 97.571701 expert_1 95.936751 expert_2 96.190430
+测试
+cov 4583/6573 sys_acc 74.090978 exp_acc 60.150748 clf_acc 80.144009 exp_acc_alone 58.877225 clf_acc_alone 69.678990 val_loss 6.819288 expert_0 64.330198 expert_1 59.707431 expert_2 56.208035
+Epoch 30, Val, Loss=4.2327 Acc=98.6713
+Epoch 30, Val, Loss=4.2327 Acc=98.6713
+Running Time: 53m, Estimated Time: 3.0h
+Running Time: 53m, Estimated Time: 3.0h
+Epoch 31, Loss=0.6179 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.25it/s]
+Epoch 31, Loss=0.6179 Acc=100.0000
+Epoch 31, Loss=0.6179 Acc=100.0000
+cov 3907/5193 sys_acc 98.594262 exp_acc 95.878679 clf_acc 99.488096 exp_acc_alone 72.597728 clf_acc_alone 97.746967 val_loss 4.284997 expert_0 96.095403 expert_1 94.864814 expert_2 96.483474
+测试
+cov 4571/6573 sys_acc 74.273543 exp_acc 61.188805 clf_acc 80.004374 exp_acc_alone 60.991937 clf_acc_alone 69.481211 val_loss 6.868123 expert_0 61.075529 expert_1 59.688561 expert_2 62.674942
+Epoch 31, Val, Loss=4.2850 Acc=98.5943
+Epoch 31, Val, Loss=4.2850 Acc=98.5943
+Epoch 32, Loss=5.1138 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.51it/s]
+Epoch 32, Loss=5.1138 Acc=100.0000
+Epoch 32, Loss=5.1138 Acc=100.0000
+cov 3912/5193 sys_acc 98.497978 exp_acc 95.784528 clf_acc 99.386501 exp_acc_alone 71.808203 clf_acc_alone 97.766224 val_loss 4.221835 expert_0 97.130200 expert_1 93.565633 expert_2 96.263694
+测试
+cov 4492/6573 sys_acc 75.064658 exp_acc 63.527144 clf_acc 80.409615 exp_acc_alone 62.117754 clf_acc_alone 69.405142 val_loss 6.957565 expert_0 67.234023 expert_1 58.415822 expert_2 64.155827
+Epoch 32, Val, Loss=4.2218 Acc=98.4980
+Epoch 32, Val, Loss=4.2218 Acc=98.4980
+Epoch 33, Loss=2.2800 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.54it/s]
+Epoch 33, Loss=2.2800 Acc=100.0000
+Epoch 33, Loss=2.2800 Acc=100.0000
+cov 3921/5193 sys_acc 98.478721 exp_acc 95.597469 clf_acc 99.413412 exp_acc_alone 74.138263 clf_acc_alone 97.708454 val_loss 4.307929 expert_0 95.918328 expert_1 96.231828 expert_2 94.736799
+测试
+cov 4524/6573 sys_acc 74.684315 exp_acc 61.688623 clf_acc 80.570290 exp_acc_alone 59.790050 clf_acc_alone 69.739845 val_loss 6.854321 expert_0 60.385739 expert_1 63.746204 expert_2 61.009801
+Epoch 33, Val, Loss=4.3079 Acc=98.4787
+Epoch 33, Val, Loss=4.3079 Acc=98.4787
+Epoch 34, Loss=5.0836 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.38it/s]
+Epoch 34, Loss=5.0836 Acc=100.0000
+Epoch 34, Loss=5.0836 Acc=100.0000
+cov 3927/5193 sys_acc 98.440208 exp_acc 95.181660 clf_acc 99.490703 exp_acc_alone 73.367995 clf_acc_alone 97.785480 val_loss 4.320741 expert_0 94.634100 expert_1 95.505575 expert_2 95.377083
+测试
+cov 4518/6573 sys_acc 74.212688 exp_acc 60.535274 clf_acc 80.433818 exp_acc_alone 60.383387 clf_acc_alone 69.678990 val_loss 6.870350 expert_0 61.639806 expert_1 58.849540 expert_2 61.095083
+Epoch 34, Val, Loss=4.3207 Acc=98.4402
+Epoch 34, Val, Loss=4.3207 Acc=98.4402
+Epoch 35, Loss=8.0017 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  7.99it/s]
+Epoch 35, Loss=8.0017 Acc=100.0000
+Epoch 35, Loss=8.0017 Acc=100.0000
+cov 3928/5193 sys_acc 98.671288 exp_acc 96.205518 clf_acc 99.465374 exp_acc_alone 72.058540 clf_acc_alone 97.766224 val_loss 4.225942 expert_0 96.897328 expert_1 95.370326 expert_2 96.376765
+测试
+cov 4564/6573 sys_acc 74.745170 exp_acc 62.419108 clf_acc 80.170901 exp_acc_alone 60.900654 clf_acc_alone 69.633349 val_loss 6.872101 expert_0 62.193344 expert_1 62.985984 expert_2 62.109937
+Epoch 35, Val, Loss=4.2259 Acc=98.6713
+Epoch 35, Val, Loss=4.2259 Acc=98.6713
+Epoch 36, Loss=2.6910 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.47it/s]
+Epoch 36, Loss=2.6910 Acc=100.0000
+Epoch 36, Loss=2.6910 Acc=100.0000
+cov 3951/5193 sys_acc 98.459465 exp_acc 95.008036 clf_acc 99.544417 exp_acc_alone 72.713268 clf_acc_alone 97.727710 val_loss 4.281759 expert_0 96.107009 expert_1 95.359585 expert_2 93.499953
+测试
+cov 4513/6573 sys_acc 74.973376 exp_acc 62.572809 clf_acc 80.633723 exp_acc_alone 60.855013 clf_acc_alone 69.572494 val_loss 6.909390 expert_0 59.748409 expert_1 64.705864 expert_2 62.998607
+Epoch 36, Val, Loss=4.2818 Acc=98.4595
+Epoch 36, Val, Loss=4.2818 Acc=98.4595
+Epoch 37, Loss=6.4072 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.57it/s]
+Epoch 37, Loss=6.4072 Acc=100.0000
+Epoch 37, Loss=6.4072 Acc=100.0000
+cov 3926/5193 sys_acc 98.536491 exp_acc 95.501169 clf_acc 99.516044 exp_acc_alone 72.597728 clf_acc_alone 97.766224 val_loss 4.267993 expert_0 96.320305 expert_1 94.567855 expert_2 95.499952
+测试
+cov 4502/6573 sys_acc 74.410467 exp_acc 61.178169 clf_acc 80.497555 exp_acc_alone 59.424920 clf_acc_alone 69.846341 val_loss 6.852224 expert_0 60.738235 expert_1 58.751885 expert_2 63.447417
+Epoch 37, Val, Loss=4.2680 Acc=98.5365
+Epoch 37, Val, Loss=4.2680 Acc=98.5365
+Epoch 38, Loss=2.2026 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.47it/s]
+Epoch 38, Loss=2.2026 Acc=100.0000
+Epoch 38, Loss=2.2026 Acc=100.0000
+cov 3898/5193 sys_acc 98.401695 exp_acc 95.289561 clf_acc 99.435605 exp_acc_alone 73.599076 clf_acc_alone 97.669940 val_loss 4.329475 expert_0 95.154143 expert_1 96.569870 expert_2 94.372254
+测试
+cov 4507/6573 sys_acc 74.425681 exp_acc 61.907061 clf_acc 80.164187 exp_acc_alone 59.774836 clf_acc_alone 69.709417 val_loss 6.903742 expert_0 62.900959 expert_1 60.586299 expert_2 62.040799
+Epoch 38, Val, Loss=4.3295 Acc=98.4017
+Epoch 38, Val, Loss=4.3295 Acc=98.4017
+Epoch 39, Loss=2.7489 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.36it/s]
+Epoch 39, Loss=2.7489 Acc=100.0000
+Epoch 39, Loss=2.7489 Acc=100.0000
+cov 3915/5193 sys_acc 98.459465 exp_acc 95.461644 clf_acc 99.438056 exp_acc_alone 72.694011 clf_acc_alone 97.708454 val_loss 4.203386 expert_0 95.508229 expert_1 95.550307 expert_2 95.327058
+测试
+cov 4567/6573 sys_acc 75.049445 exp_acc 62.412755 clf_acc 80.599954 exp_acc_alone 59.622699 clf_acc_alone 69.724631 val_loss 6.800345 expert_0 66.856311 expert_1 63.605421 expert_2 57.062921
+Epoch 39, Val, Loss=4.2034 Acc=98.4595
+Epoch 39, Val, Loss=4.2034 Acc=98.4595
+Epoch 40, Loss=5.0339 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.45it/s]
+Epoch 40, Loss=5.0339 Acc=100.0000
+Epoch 40, Loss=5.0339 Acc=100.0000
+Best Epoch 13, Best Val Acc=98.7098
+Best Epoch 13, Best Val Acc=98.7098
+cov 3898/5193 sys_acc 98.575005 exp_acc 95.598441 clf_acc 99.563876 exp_acc_alone 74.696707 clf_acc_alone 97.766224 val_loss 4.292638 expert_0 97.708293 expert_1 95.108644 expert_2 93.735976
+测试
+cov 4480/6573 sys_acc 75.429789 exp_acc 64.644045 clf_acc 80.468748 exp_acc_alone 60.672448 clf_acc_alone 69.876769 val_loss 6.933943 expert_0 66.037717 expert_1 64.659669 expert_2 63.124980
+Epoch 40, Val, Loss=4.2926 Acc=98.5750
+Epoch 40, Val, Loss=4.2926 Acc=98.5750
+Running Time: 1.2h, Estimated Time: 3.0h
+Running Time: 1.2h, Estimated Time: 3.0h
+Epoch 41, Loss=2.5559 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.26it/s]
+Epoch 41, Loss=2.5559 Acc=100.0000
+Epoch 41, Loss=2.5559 Acc=100.0000
+cov 3875/5193 sys_acc 98.440208 exp_acc 95.447633 clf_acc 99.458062 exp_acc_alone 73.926439 clf_acc_alone 97.746967 val_loss 4.269543 expert_0 94.172450 expert_1 96.055640 expert_2 96.069827
+测试
+cov 4507/6573 sys_acc 75.064658 exp_acc 63.117128 clf_acc 80.541378 exp_acc_alone 60.094325 clf_acc_alone 69.831127 val_loss 7.000197 expert_0 64.011362 expert_1 64.617672 expert_2 60.775845
+Epoch 41, Val, Loss=4.2695 Acc=98.4402
+Epoch 41, Val, Loss=4.2695 Acc=98.4402
+Epoch 42, Loss=5.9572 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.44it/s]
+Epoch 42, Loss=5.9572 Acc=100.0000
+Epoch 42, Loss=5.9572 Acc=100.0000
+cov 3979/5193 sys_acc 98.420951 exp_acc 94.810528 clf_acc 99.522491 exp_acc_alone 72.905835 clf_acc_alone 97.785480 val_loss 4.281609 expert_0 96.173420 expert_1 93.596013 expert_2 94.711493
+测试
+cov 4567/6573 sys_acc 74.380040 exp_acc 61.515448 clf_acc 80.030653 exp_acc_alone 57.051575 clf_acc_alone 69.633349 val_loss 6.827900 expert_0 62.584102 expert_1 59.608520 expert_2 61.911537
+Epoch 42, Val, Loss=4.2816 Acc=98.4210
+Epoch 42, Val, Loss=4.2816 Acc=98.4210
+Epoch 43, Loss=0.7897 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.34it/s]
+Epoch 43, Loss=0.7897 Acc=100.0000
+Epoch 43, Loss=0.7897 Acc=100.0000
+cov 3949/5193 sys_acc 98.440208 exp_acc 95.016062 clf_acc 99.518863 exp_acc_alone 71.865973 clf_acc_alone 97.708454 val_loss 4.279708 expert_0 95.796418 expert_1 95.497585 expert_2 93.513463
+测试
+cov 4554/6573 sys_acc 74.669101 exp_acc 61.317478 clf_acc 80.588492 exp_acc_alone 60.383387 clf_acc_alone 69.526852 val_loss 6.939979 expert_0 62.244880 expert_1 58.059898 expert_2 63.924030
+Epoch 43, Val, Loss=4.2797 Acc=98.4402
+Epoch 43, Val, Loss=4.2797 Acc=98.4402
+Epoch 44, Loss=6.0393 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.24it/s]
+Epoch 44, Loss=6.0393 Acc=100.0000
+Epoch 44, Loss=6.0393 Acc=100.0000
+cov 3971/5193 sys_acc 98.382438 exp_acc 95.499166 clf_acc 99.269703 exp_acc_alone 72.694011 clf_acc_alone 97.766224 val_loss 4.276702 expert_0 96.350318 expert_1 94.888847 expert_2 95.290806
+测试
+cov 4555/6573 sys_acc 74.227902 exp_acc 59.415257 clf_acc 80.790339 exp_acc_alone 58.405599 clf_acc_alone 69.907196 val_loss 6.786708 expert_0 55.267405 expert_1 61.406008 expert_2 61.079528
+Epoch 44, Val, Loss=4.2767 Acc=98.3824
+Epoch 44, Val, Loss=4.2767 Acc=98.3824
+Epoch 45, Loss=2.4880 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.28it/s]
+Epoch 45, Loss=2.4880 Acc=100.0000
+Epoch 45, Loss=2.4880 Acc=100.0000
+cov 3959/5193 sys_acc 98.343925 exp_acc 94.894636 clf_acc 99.419043 exp_acc_alone 70.960909 clf_acc_alone 97.708454 val_loss 4.248946 expert_0 94.831992 expert_1 95.121905 expert_2 94.736799
+测试
+cov 4530/6573 sys_acc 74.182261 exp_acc 60.988736 clf_acc 80.132449 exp_acc_alone 59.820478 clf_acc_alone 69.831127 val_loss 6.951699 expert_0 63.338514 expert_1 59.123038 expert_2 60.719407
+Epoch 45, Val, Loss=4.2489 Acc=98.3439
+Epoch 45, Val, Loss=4.2489 Acc=98.3439
+Epoch 46, Loss=5.1765 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.21it/s]
+Epoch 46, Loss=5.1765 Acc=100.0000
+Epoch 46, Loss=5.1765 Acc=100.0000
+cov 3911/5193 sys_acc 98.594262 exp_acc 96.333838 clf_acc 99.335206 exp_acc_alone 73.059888 clf_acc_alone 97.727710 val_loss 4.247450 expert_0 95.485284 expert_1 97.560923 expert_2 96.170172
+测试
+cov 4490/6573 sys_acc 74.714742 exp_acc 62.650018 clf_acc 80.311802 exp_acc_alone 61.052792 clf_acc_alone 69.618135 val_loss 6.926454 expert_0 63.485460 expert_1 64.242409 expert_2 59.065398
+Epoch 46, Val, Loss=4.2475 Acc=98.5943
+Epoch 46, Val, Loss=4.2475 Acc=98.5943
+Epoch 47, Loss=0.9088 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.14it/s]
+Epoch 47, Loss=0.9088 Acc=100.0000
+Epoch 47, Loss=0.9088 Acc=100.0000
+cov 3926/5193 sys_acc 98.324668 exp_acc 95.106536 clf_acc 99.363217 exp_acc_alone 73.059888 clf_acc_alone 97.766224 val_loss 4.272590 expert_0 95.337951 expert_1 94.300469 expert_2 95.575179
+测试
+cov 4528/6573 sys_acc 74.151833 exp_acc 59.902195 clf_acc 80.587454 exp_acc_alone 58.679446 clf_acc_alone 69.663776 val_loss 6.899867 expert_0 56.275847 expert_1 60.391548 expert_2 63.414615
+Epoch 47, Val, Loss=4.2726 Acc=98.3247
+Epoch 47, Val, Loss=4.2726 Acc=98.3247
+Epoch 48, Loss=0.9929 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.24it/s]
+Epoch 48, Loss=0.9929 Acc=100.0000
+Epoch 48, Loss=0.9929 Acc=100.0000
+cov 3912/5193 sys_acc 98.555748 exp_acc 95.940656 clf_acc 99.412063 exp_acc_alone 73.156172 clf_acc_alone 97.689197 val_loss 4.211784 expert_0 96.118678 expert_1 95.431424 expert_2 96.213766
+测试
+cov 4515/6573 sys_acc 74.136620 exp_acc 59.961121 clf_acc 80.598005 exp_acc_alone 59.287996 clf_acc_alone 69.435570 val_loss 6.963083 expert_0 62.648791 expert_1 55.977481 expert_2 61.481463
+Epoch 48, Val, Loss=4.2118 Acc=98.5557
+Epoch 48, Val, Loss=4.2118 Acc=98.5557
+Epoch 49, Loss=3.6002 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.60it/s]
+Epoch 49, Loss=3.6002 Acc=100.0000
+Epoch 49, Loss=3.6002 Acc=100.0000
+cov 3965/5193 sys_acc 98.536491 exp_acc 95.521157 clf_acc 99.470363 exp_acc_alone 73.406509 clf_acc_alone 97.727710 val_loss 4.268396 expert_0 96.153803 expert_1 94.354788 expert_2 95.893673
+测试
+cov 4535/6573 sys_acc 74.380040 exp_acc 60.058875 clf_acc 80.815875 exp_acc_alone 58.070896 clf_acc_alone 69.633349 val_loss 6.787366 expert_0 58.379105 expert_1 63.833056 expert_2 58.220194
+Epoch 49, Val, Loss=4.2684 Acc=98.5365
+Epoch 49, Val, Loss=4.2684 Acc=98.5365
+Epoch 50, Loss=4.2573 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.27it/s]
+Epoch 50, Loss=4.2573 Acc=100.0000
+Epoch 50, Loss=4.2573 Acc=100.0000
+Best Epoch 13, Best Val Acc=98.7098
+Best Epoch 13, Best Val Acc=98.7098
+cov 3940/5193 sys_acc 98.440208 exp_acc 95.051860 clf_acc 99.517764 exp_acc_alone 72.039284 clf_acc_alone 97.746967 val_loss 4.333387 expert_0 96.385496 expert_1 93.981438 expert_2 94.827539
+测试
+cov 4573/6573 sys_acc 74.212688 exp_acc 60.299994 clf_acc 80.297396 exp_acc_alone 59.120645 clf_acc_alone 69.739845 val_loss 6.881277 expert_0 60.437690 expert_1 55.852824 expert_2 63.490083
+Epoch 50, Val, Loss=4.3334 Acc=98.4402
+Epoch 50, Val, Loss=4.3334 Acc=98.4402
+Running Time: 1.5h, Estimated Time: 3.0h
+Running Time: 1.5h, Estimated Time: 3.0h
+Epoch 51, Loss=6.0457 Acc=100.0000: 100%|█████| 271/271 [00:37<00:00,  7.22it/s]
+Epoch 51, Loss=6.0457 Acc=100.0000
+Epoch 51, Loss=6.0457 Acc=100.0000
+cov 3945/5193 sys_acc 98.440208 exp_acc 95.032036 clf_acc 99.518375 exp_acc_alone 72.867321 clf_acc_alone 97.785480 val_loss 4.336852 expert_0 94.989065 expert_1 95.201972 expert_2 94.910893
+测试
+cov 4534/6573 sys_acc 74.486536 exp_acc 61.059337 clf_acc 80.524921 exp_acc_alone 58.633805 clf_acc_alone 69.907196 val_loss 6.841342 expert_0 60.058292 expert_1 63.519980 expert_2 59.890093
+Epoch 51, Val, Loss=4.3369 Acc=98.4402
+Epoch 51, Val, Loss=4.3369 Acc=98.4402
+Epoch 52, Loss=3.6006 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.77it/s]
+Epoch 52, Loss=3.6006 Acc=100.0000
+Epoch 52, Loss=3.6006 Acc=100.0000
+cov 3912/5193 sys_acc 98.806085 exp_acc 96.643232 clf_acc 99.514312 exp_acc_alone 73.464279 clf_acc_alone 97.746967 val_loss 4.314243 expert_0 97.268867 expert_1 95.833283 expert_2 96.674538
+测试
+cov 4502/6573 sys_acc 74.577818 exp_acc 61.805885 clf_acc 80.453130 exp_acc_alone 61.570059 clf_acc_alone 69.952837 val_loss 6.914174 expert_0 63.560483 expert_1 62.857122 expert_2 59.313062
+Epoch 52, Val, Loss=4.3142 Acc=98.8061
+Epoch 52, Val, Loss=4.3142 Acc=98.8061
+Epoch 53, Loss=8.8801 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.64it/s]
+Epoch 53, Loss=8.8801 Acc=100.0000
+Epoch 53, Loss=8.8801 Acc=100.0000
+cov 3927/5193 sys_acc 98.575005 exp_acc 95.971549 clf_acc 99.414309 exp_acc_alone 73.175428 clf_acc_alone 97.746967 val_loss 4.246479 expert_0 96.330231 expert_1 94.763045 expert_2 96.736552
+测试
+cov 4517/6573 sys_acc 74.532177 exp_acc 61.867698 clf_acc 80.296655 exp_acc_alone 61.554846 clf_acc_alone 69.755059 val_loss 6.979730 expert_0 61.290305 expert_1 64.102545 expert_2 60.294100
+Epoch 53, Val, Loss=4.2465 Acc=98.5750
+Epoch 53, Val, Loss=4.2465 Acc=98.5750
+Epoch 54, Loss=0.6866 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.73it/s]
+Epoch 54, Loss=0.6866 Acc=100.0000
+Epoch 54, Loss=0.6866 Acc=100.0000
+cov 3892/5193 sys_acc 98.575005 exp_acc 96.003060 clf_acc 99.434735 exp_acc_alone 73.810899 clf_acc_alone 97.746967 val_loss 4.294112 expert_0 95.981042 expert_1 95.322897 expert_2 96.736552
+测试
+cov 4438/6573 sys_acc 75.368934 exp_acc 64.683835 clf_acc 80.509237 exp_acc_alone 64.597596 clf_acc_alone 69.663776 val_loss 7.034732 expert_0 66.243638 expert_1 60.863077 expert_2 66.666647
+Epoch 54, Val, Loss=4.2941 Acc=98.5750
+Epoch 54, Val, Loss=4.2941 Acc=98.5750
+Epoch 55, Loss=5.8843 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.65it/s]
+Epoch 55, Loss=5.8843 Acc=100.0000
+Epoch 55, Loss=5.8843 Acc=100.0000
+cov 3965/5193 sys_acc 98.401695 exp_acc 95.113991 clf_acc 99.419922 exp_acc_alone 71.519353 clf_acc_alone 97.727710 val_loss 4.210284 expert_0 95.918311 expert_1 94.545412 expert_2 95.056137
+测试
+cov 4518/6573 sys_acc 74.821238 exp_acc 61.946466 clf_acc 80.677289 exp_acc_alone 60.824585 clf_acc_alone 69.648562 val_loss 7.014718 expert_0 62.747672 expert_1 64.109216 expert_2 57.655933
+Epoch 55, Val, Loss=4.2103 Acc=98.4017
+Epoch 55, Val, Loss=4.2103 Acc=98.4017
+Epoch 56, Loss=5.0558 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.79it/s]
+Epoch 56, Loss=5.0558 Acc=100.0000
+Epoch 56, Loss=5.0558 Acc=100.0000
+cov 3943/5193 sys_acc 98.536491 exp_acc 95.439985 clf_acc 99.518131 exp_acc_alone 72.231851 clf_acc_alone 97.708454 val_loss 4.246794 expert_0 95.673031 expert_1 94.858563 expert_2 95.730294
+测试
+cov 4558/6573 sys_acc 74.669101 exp_acc 62.531011 clf_acc 80.035101 exp_acc_alone 61.189716 clf_acc_alone 69.633349 val_loss 6.885003 expert_0 62.750698 expert_1 63.175102 expert_2 61.756356
+Epoch 56, Val, Loss=4.2468 Acc=98.5365
+Epoch 56, Val, Loss=4.2468 Acc=98.5365
+Epoch 57, Loss=5.0688 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.20it/s]
+Epoch 57, Loss=5.0688 Acc=100.0000
+Epoch 57, Loss=5.0688 Acc=100.0000
+cov 3977/5193 sys_acc 98.555748 exp_acc 95.970379 clf_acc 99.346238 exp_acc_alone 72.944348 clf_acc_alone 97.785480 val_loss 4.259466 expert_0 95.641600 expert_1 96.464598 expert_2 95.823049
+测试
+cov 4504/6573 sys_acc 74.745170 exp_acc 62.203957 clf_acc 80.506215 exp_acc_alone 59.653126 clf_acc_alone 69.694204 val_loss 6.886865 expert_0 65.709708 expert_1 60.702321 expert_2 60.663493
+Epoch 57, Val, Loss=4.2595 Acc=98.5557
+Epoch 57, Val, Loss=4.2595 Acc=98.5557
+Epoch 58, Loss=7.4887 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.84it/s]
+Epoch 58, Loss=7.4887 Acc=100.0000
+Epoch 58, Loss=7.4887 Acc=100.0000
+cov 3891/5193 sys_acc 98.228384 exp_acc 94.777251 clf_acc 99.383189 exp_acc_alone 73.656846 clf_acc_alone 97.727710 val_loss 4.314507 expert_0 95.333291 expert_1 94.244559 expert_2 94.712600
+测试
+cov 4510/6573 sys_acc 74.243116 exp_acc 60.736785 clf_acc 80.421284 exp_acc_alone 58.116537 clf_acc_alone 69.907196 val_loss 6.872471 expert_0 61.797735 expert_1 60.399984 expert_2 59.900146
+Epoch 58, Val, Loss=4.3145 Acc=98.2284
+Epoch 58, Val, Loss=4.3145 Acc=98.2284
+Epoch 59, Loss=5.2429 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  7.99it/s]
+Epoch 59, Loss=5.2429 Acc=100.0000
+Epoch 59, Loss=5.2429 Acc=100.0000
+cov 3957/5193 sys_acc 98.632775 exp_acc 95.954677 clf_acc 99.469292 exp_acc_alone 72.771038 clf_acc_alone 97.746967 val_loss 4.293471 expert_0 95.177617 expert_1 95.814936 expert_2 96.907167
+测试
+cov 4522/6573 sys_acc 73.786703 exp_acc 58.703066 clf_acc 80.628039 exp_acc_alone 58.162179 clf_acc_alone 69.648562 val_loss 6.869053 expert_0 60.108532 expert_1 59.173534 expert_2 56.840605
+Epoch 59, Val, Loss=4.2935 Acc=98.6328
+Epoch 59, Val, Loss=4.2935 Acc=98.6328
+Epoch 60, Loss=5.2287 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.10it/s]
+Epoch 60, Loss=5.2287 Acc=100.0000
+Epoch 60, Loss=5.2287 Acc=100.0000
+Best Epoch 52, Best Val Acc=98.8061
+Best Epoch 52, Best Val Acc=98.8061
+cov 3951/5193 sys_acc 98.555748 exp_acc 95.893704 clf_acc 99.392556 exp_acc_alone 72.097054 clf_acc_alone 97.727710 val_loss 4.226494 expert_0 94.927490 expert_1 95.724420 expert_2 97.051549
+测试
+cov 4638/6573 sys_acc 74.227902 exp_acc 59.999994 clf_acc 80.163862 exp_acc_alone 57.279781 clf_acc_alone 69.846341 val_loss 6.887857 expert_0 58.481403 expert_1 62.399983 expert_2 58.480545
+Epoch 60, Val, Loss=4.2265 Acc=98.5557
+Epoch 60, Val, Loss=4.2265 Acc=98.5557
+Running Time: 1.7h, Estimated Time: 2.9h
+Running Time: 1.7h, Estimated Time: 2.9h
+Epoch 61, Loss=0.3863 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.83it/s]
+Epoch 61, Loss=0.3863 Acc=100.0000
+Epoch 61, Loss=0.3863 Acc=100.0000
+cov 3950/5193 sys_acc 98.613518 exp_acc 95.977458 clf_acc 99.443035 exp_acc_alone 71.808203 clf_acc_alone 97.766224 val_loss 4.317762 expert_0 96.428522 expert_1 96.585319 expert_2 95.011295
+测试
+cov 4470/6573 sys_acc 74.319185 exp_acc 61.008078 clf_acc 80.581654 exp_acc_alone 60.292104 clf_acc_alone 69.663776 val_loss 6.943339 expert_0 60.596527 expert_1 57.338805 expert_2 64.993198
+Epoch 61, Val, Loss=4.3178 Acc=98.6135
+Epoch 61, Val, Loss=4.3178 Acc=98.6135
+Epoch 62, Loss=2.4554 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.49it/s]
+Epoch 62, Loss=2.4554 Acc=100.0000
+Epoch 62, Loss=2.4554 Acc=100.0000
+cov 3912/5193 sys_acc 98.883112 exp_acc 96.799360 clf_acc 99.565437 exp_acc_alone 73.676102 clf_acc_alone 97.746967 val_loss 4.282119 expert_0 96.682419 expert_1 97.596107 expert_2 96.162485
+测试
+cov 4564/6573 sys_acc 74.440895 exp_acc 60.975604 clf_acc 80.368096 exp_acc_alone 61.083219 clf_acc_alone 69.602921 val_loss 6.865503 expert_0 62.754284 expert_1 61.935464 expert_2 58.666651
+Epoch 62, Val, Loss=4.2821 Acc=98.8831
+Epoch 62, Val, Loss=4.2821 Acc=98.8831
+Epoch 63, Loss=6.0274 Acc=100.0000: 100%|█████| 271/271 [00:26<00:00, 10.08it/s]
+Epoch 63, Loss=6.0274 Acc=100.0000
+Epoch 63, Loss=6.0274 Acc=100.0000
+cov 3901/5193 sys_acc 98.594262 exp_acc 95.588220 clf_acc 99.589846 exp_acc_alone 72.308877 clf_acc_alone 97.766224 val_loss 4.246794 expert_0 95.973111 expert_1 96.674538 expert_2 94.103729
+测试
+cov 4605/6573 sys_acc 73.938841 exp_acc 58.638205 clf_acc 80.477740 exp_acc_alone 57.523201 clf_acc_alone 69.739845 val_loss 6.861550 expert_0 59.581301 expert_1 58.695633 expert_2 57.810398
+Epoch 63, Val, Loss=4.2468 Acc=98.5943
+Epoch 63, Val, Loss=4.2468 Acc=98.5943
+Epoch 64, Loss=5.0004 Acc=100.0000: 100%|█████| 271/271 [00:29<00:00,  9.19it/s]
+Epoch 64, Loss=5.0004 Acc=100.0000
+Epoch 64, Loss=5.0004 Acc=100.0000
+cov 3899/5193 sys_acc 98.440208 exp_acc 95.749599 clf_acc 99.333160 exp_acc_alone 72.462931 clf_acc_alone 97.727710 val_loss 4.187801 expert_0 96.335028 expert_1 94.202860 expert_2 96.969652
+测试
+cov 4555/6573 sys_acc 74.516963 exp_acc 60.356783 clf_acc 80.790339 exp_acc_alone 60.018257 clf_acc_alone 69.694204 val_loss 6.933040 expert_0 59.451201 expert_1 61.142840 expert_2 60.422942
+Epoch 64, Val, Loss=4.1878 Acc=98.4402
+Epoch 64, Val, Loss=4.1878 Acc=98.4402
+Epoch 65, Loss=2.7401 Acc=100.0000: 100%|█████| 271/271 [00:25<00:00, 10.67it/s]
+Epoch 65, Loss=2.7401 Acc=100.0000
+Epoch 65, Loss=2.7401 Acc=100.0000
+cov 3957/5193 sys_acc 98.613518 exp_acc 95.550146 clf_acc 99.570379 exp_acc_alone 71.827460 clf_acc_alone 97.708454 val_loss 4.184721 expert_0 96.713570 expert_1 94.399950 expert_2 95.402255
+测试
+cov 4470/6573 sys_acc 74.836452 exp_acc 62.767469 clf_acc 80.514540 exp_acc_alone 61.509204 clf_acc_alone 69.831127 val_loss 6.939201 expert_0 63.781608 expert_1 60.996543 expert_2 63.116867
+Epoch 65, Val, Loss=4.1847 Acc=98.6135
+Epoch 65, Val, Loss=4.1847 Acc=98.6135
+Epoch 66, Loss=6.8797 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.67it/s]
+Epoch 66, Loss=6.8797 Acc=100.0000
+Epoch 66, Loss=6.8797 Acc=100.0000
+cov 3953/5193 sys_acc 98.575005 exp_acc 95.967726 clf_acc 99.392864 exp_acc_alone 73.502792 clf_acc_alone 97.727710 val_loss 4.316543 expert_0 96.596808 expert_1 96.658048 expert_2 94.882689
+测试
+cov 4506/6573 sys_acc 74.608246 exp_acc 61.731973 clf_acc 80.514867 exp_acc_alone 60.733303 clf_acc_alone 69.648562 val_loss 6.970432 expert_0 62.756580 expert_1 62.183738 expert_2 60.094618
+Epoch 66, Val, Loss=4.3165 Acc=98.5750
+Epoch 66, Val, Loss=4.3165 Acc=98.5750
+Epoch 67, Loss=8.0030 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.69it/s]
+Epoch 67, Loss=8.0030 Acc=100.0000
+Epoch 67, Loss=8.0030 Acc=100.0000
+cov 3888/5193 sys_acc 98.420951 exp_acc 95.325656 clf_acc 99.459874 exp_acc_alone 72.867321 clf_acc_alone 97.708454 val_loss 4.347465 expert_0 96.336165 expert_1 94.212919 expert_2 95.354477
+测试
+cov 4479/6573 sys_acc 74.577818 exp_acc 61.509068 clf_acc 80.687652 exp_acc_alone 60.307318 clf_acc_alone 69.846341 val_loss 6.935103 expert_0 64.613162 expert_1 60.504185 expert_2 59.384147
+Epoch 67, Val, Loss=4.3475 Acc=98.4210
+Epoch 67, Val, Loss=4.3475 Acc=98.4210
+Epoch 68, Loss=5.4044 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  7.99it/s]
+Epoch 68, Loss=5.4044 Acc=100.0000
+Epoch 68, Loss=5.4044 Acc=100.0000
+cov 3935/5193 sys_acc 98.594262 exp_acc 95.866439 clf_acc 99.466325 exp_acc_alone 72.944348 clf_acc_alone 97.727710 val_loss 4.291914 expert_0 96.803609 expert_1 94.698750 expert_2 96.049335
+测试
+cov 4532/6573 sys_acc 74.303971 exp_acc 60.803522 clf_acc 80.383935 exp_acc_alone 60.398600 clf_acc_alone 69.785486 val_loss 6.951110 expert_0 63.157873 expert_1 58.238620 expert_2 61.408067
+Epoch 68, Val, Loss=4.2919 Acc=98.5943
+Epoch 68, Val, Loss=4.2919 Acc=98.5943
+Epoch 69, Loss=5.9466 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.69it/s]
+Epoch 69, Loss=5.9466 Acc=100.0000
+Epoch 69, Loss=5.9466 Acc=100.0000
+cov 3983/5193 sys_acc 98.420951 exp_acc 94.876017 clf_acc 99.497863 exp_acc_alone 70.460235 clf_acc_alone 97.727710 val_loss 4.187065 expert_0 94.444394 expert_1 93.861845 expert_2 96.145081
+测试
+cov 4477/6573 sys_acc 74.547391 exp_acc 61.832055 clf_acc 80.500333 exp_acc_alone 60.855013 clf_acc_alone 69.572494 val_loss 6.938535 expert_0 62.209284 expert_1 63.902423 expert_2 58.503381
+Epoch 69, Val, Loss=4.1871 Acc=98.4210
+Epoch 69, Val, Loss=4.1871 Acc=98.4210
+Epoch 70, Loss=6.4453 Acc=100.0000: 100%|█████| 271/271 [00:35<00:00,  7.69it/s]
+Epoch 70, Loss=6.4453 Acc=100.0000
+Epoch 70, Loss=6.4453 Acc=100.0000
+Best Epoch 62, Best Val Acc=98.8831
+Best Epoch 62, Best Val Acc=98.8831
+cov 3996/5193 sys_acc 98.420951 exp_acc 95.154537 clf_acc 99.399397 exp_acc_alone 71.769690 clf_acc_alone 97.746967 val_loss 4.280187 expert_0 96.382379 expert_1 92.391254 expert_2 96.380047
+测试
+cov 4547/6573 sys_acc 74.395253 exp_acc 60.710754 clf_acc 80.492631 exp_acc_alone 59.211928 clf_acc_alone 69.694204 val_loss 6.908337 expert_0 60.451110 expert_1 59.574451 expert_2 62.195103
+Epoch 70, Val, Loss=4.2802 Acc=98.4210
+Epoch 70, Val, Loss=4.2802 Acc=98.4210
+Running Time: 2.0h, Estimated Time: 2.9h
+Running Time: 2.0h, Estimated Time: 2.9h
+Epoch 71, Loss=0.3853 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.79it/s]
+Epoch 71, Loss=0.3853 Acc=100.0000
+Epoch 71, Loss=0.3853 Acc=100.0000
+cov 3889/5193 sys_acc 98.632775 exp_acc 96.165629 clf_acc 99.460013 exp_acc_alone 74.119006 clf_acc_alone 97.727710 val_loss 4.366761 expert_0 96.136320 expert_1 96.153797 expert_2 96.202491
+测试
+cov 4581/6573 sys_acc 74.410467 exp_acc 60.190757 clf_acc 80.593755 exp_acc_alone 58.116537 clf_acc_alone 69.618135 val_loss 6.851610 expert_0 59.348425 expert_1 63.667798 expert_2 58.192074
+Epoch 71, Val, Loss=4.3668 Acc=98.6328
+Epoch 71, Val, Loss=4.3668 Acc=98.6328
+Epoch 72, Loss=5.2253 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.50it/s]
+Epoch 72, Loss=5.2253 Acc=100.0000
+Epoch 72, Loss=5.2253 Acc=100.0000
+cov 3958/5193 sys_acc 98.517235 exp_acc 95.789458 clf_acc 99.368365 exp_acc_alone 72.193337 clf_acc_alone 97.708454 val_loss 4.242253 expert_0 96.382938 expert_1 95.511174 expert_2 95.329618
+测试
+cov 4422/6573 sys_acc 75.551499 exp_acc 64.528120 clf_acc 80.913612 exp_acc_alone 61.113647 clf_acc_alone 69.678990 val_loss 6.971595 expert_0 66.361239 expert_1 61.441987 expert_2 65.287032
+Epoch 72, Val, Loss=4.2423 Acc=98.5172
+Epoch 72, Val, Loss=4.2423 Acc=98.5172
+Epoch 73, Loss=0.5746 Acc=100.0000: 100%|█████| 271/271 [00:28<00:00,  9.40it/s]
+Epoch 73, Loss=0.5746 Acc=100.0000
+Epoch 73, Loss=0.5746 Acc=100.0000
+cov 3937/5193 sys_acc 98.613518 exp_acc 95.780240 clf_acc 99.517397 exp_acc_alone 73.810899 clf_acc_alone 97.708454 val_loss 4.262970 expert_0 96.033363 expert_1 93.888837 expert_2 97.122256
+测试
+cov 4498/6573 sys_acc 74.121406 exp_acc 60.626500 clf_acc 80.346819 exp_acc_alone 58.314316 clf_acc_alone 69.648562 val_loss 6.821928 expert_0 60.434037 expert_1 63.186796 expert_2 58.288754
+Epoch 73, Val, Loss=4.2630 Acc=98.6135
+Epoch 73, Val, Loss=4.2630 Acc=98.6135
+Epoch 74, Loss=5.0473 Acc=100.0000: 100%|█████| 271/271 [00:27<00:00,  9.70it/s]
+Epoch 74, Loss=5.0473 Acc=100.0000
+Epoch 74, Loss=5.0473 Acc=100.0000
+cov 3952/5193 sys_acc 98.613518 exp_acc 95.568075 clf_acc 99.569836 exp_acc_alone 73.079145 clf_acc_alone 97.689197 val_loss 4.328226 expert_0 96.172203 expert_1 95.384566 expert_2 95.150072
+测试
+cov 4465/6573 sys_acc 75.034231 exp_acc 63.235288 clf_acc 80.604701 exp_acc_alone 61.828693 clf_acc_alone 69.755059 val_loss 6.944056 expert_0 69.452866 expert_1 59.067342 expert_2 61.946884
+Epoch 74, Val, Loss=4.3282 Acc=98.6135
+Epoch 74, Val, Loss=4.3282 Acc=98.6135
+Epoch 75, Loss=2.8973 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.00it/s]
+Epoch 75, Loss=2.8973 Acc=100.0000
+Epoch 75, Loss=2.8973 Acc=100.0000
+cov 3917/5193 sys_acc 98.671288 exp_acc 95.768010 clf_acc 99.617051 exp_acc_alone 73.772386 clf_acc_alone 97.746967 val_loss 4.293528 expert_0 97.029655 expert_1 96.598596 expert_2 93.735455
+测试
+cov 4470/6573 sys_acc 75.079872 exp_acc 63.147878 clf_acc 80.693510 exp_acc_alone 62.543740 clf_acc_alone 69.511639 val_loss 6.974128 expert_0 66.901385 expert_1 61.813522 expert_2 61.702111
+Epoch 75, Val, Loss=4.2935 Acc=98.6713
+Epoch 75, Val, Loss=4.2935 Acc=98.6713
+Epoch 76, Loss=5.0642 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.84it/s]
+Epoch 76, Loss=5.0642 Acc=100.0000
+Epoch 76, Loss=5.0642 Acc=100.0000
+cov 3891/5193 sys_acc 98.517235 exp_acc 95.698910 clf_acc 99.460290 exp_acc_alone 74.176776 clf_acc_alone 97.727710 val_loss 4.285056 expert_0 95.893184 expert_1 95.932968 expert_2 95.214058
+测试
+cov 4555/6573 sys_acc 74.182261 exp_acc 60.654107 clf_acc 80.175629 exp_acc_alone 59.409706 clf_acc_alone 69.876769 val_loss 6.944370 expert_0 61.197901 expert_1 62.517465 expert_2 57.383156
+Epoch 76, Val, Loss=4.2851 Acc=98.5172
+Epoch 76, Val, Loss=4.2851 Acc=98.5172
+Epoch 77, Loss=6.0515 Acc=100.0000: 100%|█████| 271/271 [00:30<00:00,  8.76it/s]
+Epoch 77, Loss=6.0515 Acc=100.0000
+Epoch 77, Loss=6.0515 Acc=100.0000
+cov 3949/5193 sys_acc 98.363181 exp_acc 94.935676 clf_acc 99.442894 exp_acc_alone 73.945696 clf_acc_alone 97.708454 val_loss 4.258211 expert_0 94.348848 expert_1 95.343638 expert_2 95.077671
+测试
+cov 4500/6573 sys_acc 74.806025 exp_acc 62.711041 clf_acc 80.377776 exp_acc_alone 60.596379 clf_acc_alone 69.815914 val_loss 6.987111 expert_0 62.243266 expert_1 59.717850 expert_2 65.461330
+Epoch 77, Val, Loss=4.2582 Acc=98.3632
+Epoch 77, Val, Loss=4.2582 Acc=98.3632
+Epoch 78, Loss=5.6308 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.76it/s]
+Epoch 78, Loss=5.6308 Acc=100.0000
+Epoch 78, Loss=5.6308 Acc=100.0000
+cov 3990/5193 sys_acc 98.613518 exp_acc 95.594332 clf_acc 99.523807 exp_acc_alone 71.346043 clf_acc_alone 97.708454 val_loss 4.233661 expert_0 96.190430 expert_1 93.768490 expert_2 96.412513
+测试
+cov 4534/6573 sys_acc 74.729956 exp_acc 62.432559 clf_acc 80.260254 exp_acc_alone 60.565952 clf_acc_alone 69.633349 val_loss 6.959496 expert_0 65.597125 expert_1 59.276711 expert_2 62.707824
+Epoch 78, Val, Loss=4.2337 Acc=98.6135
+Epoch 78, Val, Loss=4.2337 Acc=98.6135
+Epoch 79, Loss=0.8394 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  7.97it/s]
+Epoch 79, Loss=0.8394 Acc=100.0000
+Epoch 79, Loss=0.8394 Acc=100.0000
+cov 3959/5193 sys_acc 98.401695 exp_acc 94.894636 clf_acc 99.494819 exp_acc_alone 72.462931 clf_acc_alone 97.727710 val_loss 4.255397 expert_0 94.270784 expert_1 94.606699 expert_2 95.802422
+测试
+cov 4438/6573 sys_acc 74.958162 exp_acc 63.559713 clf_acc 80.441639 exp_acc_alone 61.706983 clf_acc_alone 69.602921 val_loss 7.027956 expert_0 61.997209 expert_1 62.848278 expert_2 65.624983
+Epoch 79, Val, Loss=4.2554 Acc=98.4017
+Epoch 79, Val, Loss=4.2554 Acc=98.4017
+Epoch 80, Loss=4.4526 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.87it/s]
+Epoch 80, Loss=4.4526 Acc=100.0000
+Epoch 80, Loss=4.4526 Acc=100.0000
+Best Epoch 62, Best Val Acc=98.8831
+Best Epoch 62, Best Val Acc=98.8831
+cov 3903/5193 sys_acc 98.613518 exp_acc 96.201535 clf_acc 99.410707 exp_acc_alone 73.406509 clf_acc_alone 97.689197 val_loss 4.306995 expert_0 97.945161 expert_1 96.268609 expert_2 94.444402
+测试
+cov 4584/6573 sys_acc 73.969268 exp_acc 60.583202 clf_acc 79.777485 exp_acc_alone 57.203712 clf_acc_alone 69.815914 val_loss 6.880221 expert_0 61.797735 expert_1 57.739920 expert_2 62.123594
+Epoch 80, Val, Loss=4.3070 Acc=98.6135
+Epoch 80, Val, Loss=4.3070 Acc=98.6135
+Running Time: 2.2h, Estimated Time: 2.8h
+Running Time: 2.2h, Estimated Time: 2.8h
+Epoch 81, Loss=10.5116 Acc=100.0000: 100%|████| 271/271 [00:36<00:00,  7.33it/s]
+Epoch 81, Loss=10.5116 Acc=100.0000
+Epoch 81, Loss=10.5116 Acc=100.0000
+cov 3914/5193 sys_acc 98.632775 exp_acc 95.699750 clf_acc 99.591208 exp_acc_alone 73.310225 clf_acc_alone 97.689197 val_loss 4.221929 expert_0 95.739300 expert_1 94.847731 expert_2 96.467949
+测试
+cov 4547/6573 sys_acc 74.456108 exp_acc 61.549846 clf_acc 80.206728 exp_acc_alone 60.657234 clf_acc_alone 69.709417 val_loss 6.952266 expert_0 64.419452 expert_1 59.562825 expert_2 61.447352
+Epoch 81, Val, Loss=4.2219 Acc=98.6328
+Epoch 81, Val, Loss=4.2219 Acc=98.6328
+Epoch 82, Loss=3.9625 Acc=100.0000: 100%|█████| 271/271 [00:38<00:00,  7.10it/s]
+Epoch 82, Loss=3.9625 Acc=100.0000
+Epoch 82, Loss=3.9625 Acc=100.0000
+cov 3928/5193 sys_acc 98.420951 exp_acc 95.098799 clf_acc 99.490832 exp_acc_alone 73.541306 clf_acc_alone 97.708454 val_loss 4.293702 expert_0 94.987421 expert_1 95.312457 expert_2 94.976031
+测试
+cov 4533/6573 sys_acc 74.380040 exp_acc 62.107837 clf_acc 79.902932 exp_acc_alone 61.448349 clf_acc_alone 69.648562 val_loss 6.963882 expert_0 62.499979 expert_1 61.988286 expert_2 61.898379
+Epoch 82, Val, Loss=4.2937 Acc=98.4210
+Epoch 82, Val, Loss=4.2937 Acc=98.4210
+Epoch 83, Loss=4.9553 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.43it/s]
+Epoch 83, Loss=4.9553 Acc=100.0000
+Epoch 83, Loss=4.9553 Acc=100.0000
+cov 3895/5193 sys_acc 98.382438 exp_acc 95.223406 clf_acc 99.435171 exp_acc_alone 71.808203 clf_acc_alone 97.785480 val_loss 4.278984 expert_0 94.160538 expert_1 95.280856 expert_2 96.153803
+测试
+cov 4652/6573 sys_acc 74.014909 exp_acc 59.187917 clf_acc 80.137574 exp_acc_alone 58.025255 clf_acc_alone 69.557280 val_loss 6.934500 expert_0 59.446235 expert_1 56.534937 expert_2 61.633263
+Epoch 83, Val, Loss=4.2790 Acc=98.3824
+Epoch 83, Val, Loss=4.2790 Acc=98.3824
+Epoch 84, Loss=2.4930 Acc=100.0000: 100%|█████| 271/271 [00:26<00:00, 10.04it/s]
+Epoch 84, Loss=2.4930 Acc=100.0000
+Epoch 84, Loss=2.4930 Acc=100.0000
+cov 3970/5193 sys_acc 98.440208 exp_acc 95.012249 clf_acc 99.496219 exp_acc_alone 72.443674 clf_acc_alone 97.708454 val_loss 4.309931 expert_0 94.468985 expert_1 94.195201 expert_2 96.428522
+测试
+cov 4583/6573 sys_acc 73.528069 exp_acc 58.743713 clf_acc 79.947631 exp_acc_alone 57.964400 clf_acc_alone 69.526852 val_loss 6.923055 expert_0 60.296278 expert_1 60.826426 expert_2 55.492942
+Epoch 84, Val, Loss=4.3099 Acc=98.4402
+Epoch 84, Val, Loss=4.3099 Acc=98.4402
+Epoch 85, Loss=6.6907 Acc=100.0000: 100%|█████| 271/271 [00:28<00:00,  9.56it/s]
+Epoch 85, Loss=6.6907 Acc=100.0000
+Epoch 85, Loss=6.6907 Acc=100.0000
+cov 4009/5193 sys_acc 98.363181 exp_acc 94.847957 clf_acc 99.401344 exp_acc_alone 71.634893 clf_acc_alone 97.727710 val_loss 4.236371 expert_0 93.112197 expert_1 94.902867 expert_2 96.578897
+测试
+cov 4536/6573 sys_acc 75.079872 exp_acc 62.346582 clf_acc 80.798058 exp_acc_alone 60.809372 clf_acc_alone 69.663776 val_loss 6.927708 expert_0 64.714476 expert_1 60.891917 expert_2 61.348882
+Epoch 85, Val, Loss=4.2364 Acc=98.3632
+Epoch 85, Val, Loss=4.2364 Acc=98.3632
+Epoch 86, Loss=4.9752 Acc=100.0000: 100%|█████| 271/271 [00:31<00:00,  8.64it/s]
+Epoch 86, Loss=4.9752 Acc=100.0000
+Epoch 86, Loss=4.9752 Acc=100.0000
+cov 3919/5193 sys_acc 98.613518 exp_acc 96.075338 clf_acc 99.438630 exp_acc_alone 73.695359 clf_acc_alone 97.708454 val_loss 4.311317 expert_0 96.163023 expert_1 96.199479 expert_2 95.871516
+测试
+cov 4530/6573 sys_acc 74.501750 exp_acc 62.114531 clf_acc 80.088298 exp_acc_alone 59.607485 clf_acc_alone 69.739845 val_loss 6.962931 expert_0 66.111932 expert_1 63.699565 expert_2 56.410239
+Epoch 86, Val, Loss=4.3113 Acc=98.6135
+Epoch 86, Val, Loss=4.3113 Acc=98.6135
+Epoch 87, Loss=0.6207 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.90it/s]
+Epoch 87, Loss=0.6207 Acc=100.0000
+Epoch 87, Loss=0.6207 Acc=100.0000
+cov 3904/5193 sys_acc 98.613518 exp_acc 96.043430 clf_acc 99.462088 exp_acc_alone 74.138263 clf_acc_alone 97.746967 val_loss 4.305198 expert_0 94.579895 expert_1 95.698884 expert_2 97.582375
+测试
+cov 4443/6573 sys_acc 74.425681 exp_acc 61.361497 clf_acc 80.688722 exp_acc_alone 62.117754 clf_acc_alone 69.694204 val_loss 6.976578 expert_0 62.367204 expert_1 61.965794 expert_2 59.947969
+Epoch 87, Val, Loss=4.3052 Acc=98.6135
+Epoch 87, Val, Loss=4.3052 Acc=98.6135
+Epoch 88, Loss=2.7618 Acc=100.0000: 100%|█████| 271/271 [00:32<00:00,  8.26it/s]
+Epoch 88, Loss=2.7618 Acc=100.0000
+Epoch 88, Loss=2.7618 Acc=100.0000
+cov 3936/5193 sys_acc 98.401695 exp_acc 94.988052 clf_acc 99.491867 exp_acc_alone 73.233199 clf_acc_alone 97.727710 val_loss 4.263745 expert_0 93.417674 expert_1 95.632140 expert_2 95.784498
+测试
+cov 4534/6573 sys_acc 73.588924 exp_acc 59.097591 clf_acc 80.105865 exp_acc_alone 56.823368 clf_acc_alone 69.770272 val_loss 6.783878 expert_0 64.842664 expert_1 57.360387 expert_2 54.672230
+Epoch 88, Val, Loss=4.2637 Acc=98.4017
+Epoch 88, Val, Loss=4.2637 Acc=98.4017
+Epoch 89, Loss=2.5063 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.84it/s]
+Epoch 89, Loss=2.5063 Acc=100.0000
+Epoch 89, Loss=2.5063 Acc=100.0000
+cov 3974/5193 sys_acc 98.478721 exp_acc 95.324020 clf_acc 99.446399 exp_acc_alone 72.925091 clf_acc_alone 97.689197 val_loss 4.291617 expert_0 95.128156 expert_1 94.847731 expert_2 96.019853
+测试
+cov 4608/6573 sys_acc 73.497642 exp_acc 58.066152 clf_acc 80.078123 exp_acc_alone 55.180283 clf_acc_alone 69.739845 val_loss 6.784645 expert_0 61.580365 expert_1 57.753146 expert_2 54.090132
+Epoch 89, Val, Loss=4.2916 Acc=98.4787
+Epoch 89, Val, Loss=4.2916 Acc=98.4787
+Epoch 90, Loss=4.2789 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.88it/s]
+Epoch 90, Loss=4.2789 Acc=100.0000
+Epoch 90, Loss=4.2789 Acc=100.0000
+Best Epoch 62, Best Val Acc=98.8831
+Best Epoch 62, Best Val Acc=98.8831
+cov 3922/5193 sys_acc 98.575005 exp_acc 95.515327 clf_acc 99.566545 exp_acc_alone 73.136915 clf_acc_alone 97.689197 val_loss 4.260485 expert_0 95.391661 expert_1 94.759784 expert_2 96.569870
+测试
+cov 4510/6573 sys_acc 74.562605 exp_acc 61.027624 clf_acc 80.753878 exp_acc_alone 60.581165 clf_acc_alone 69.800700 val_loss 6.945950 expert_0 62.908476 expert_1 61.976029 expert_2 58.748389
+Epoch 90, Val, Loss=4.2605 Acc=98.5750
+Epoch 90, Val, Loss=4.2605 Acc=98.5750
+Running Time: 2.5h, Estimated Time: 2.8h
+Running Time: 2.5h, Estimated Time: 2.8h
+Epoch 91, Loss=4.9417 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.94it/s]
+Epoch 91, Loss=4.9417 Acc=100.0000
+Epoch 91, Loss=4.9417 Acc=100.0000
+cov 3975/5193 sys_acc 98.671288 exp_acc 96.223301 clf_acc 99.421381 exp_acc_alone 73.271712 clf_acc_alone 97.727710 val_loss 4.277322 expert_0 95.928704 expert_1 96.733620 expert_2 96.018690
+测试
+cov 4444/6573 sys_acc 74.227902 exp_acc 61.343348 clf_acc 80.400538 exp_acc_alone 60.276890 clf_acc_alone 69.359501 val_loss 6.931496 expert_0 61.239175 expert_1 61.864389 expert_2 60.935334
+Epoch 91, Val, Loss=4.2773 Acc=98.6713
+Epoch 91, Val, Loss=4.2773 Acc=98.6713
+Epoch 92, Loss=0.4303 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.83it/s]
+Epoch 92, Loss=0.4303 Acc=100.0000
+Epoch 92, Loss=0.4303 Acc=100.0000
+cov 3796/5193 sys_acc 98.709802 exp_acc 96.420888 clf_acc 99.552158 exp_acc_alone 74.677450 clf_acc_alone 97.708454 val_loss 4.301342 expert_0 97.204259 expert_1 95.789433 expert_2 96.280045
+测试
+cov 4519/6573 sys_acc 74.349612 exp_acc 62.171367 clf_acc 79.884929 exp_acc_alone 57.888331 clf_acc_alone 69.724631 val_loss 6.850693 expert_0 62.446639 expert_1 60.906498 expert_2 63.255794
+Epoch 92, Val, Loss=4.3013 Acc=98.7098
+Epoch 92, Val, Loss=4.3013 Acc=98.7098
+Epoch 93, Loss=5.0313 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.01it/s]
+Epoch 93, Loss=5.0313 Acc=100.0000
+Epoch 93, Loss=5.0313 Acc=100.0000
+cov 3881/5193 sys_acc 98.517235 exp_acc 95.579254 clf_acc 99.510433 exp_acc_alone 73.868669 clf_acc_alone 97.746967 val_loss 4.295047 expert_0 96.543734 expert_1 94.484367 expert_2 95.661564
+测试
+cov 4480/6573 sys_acc 74.121406 exp_acc 60.678446 clf_acc 80.401784 exp_acc_alone 59.090218 clf_acc_alone 69.755059 val_loss 6.895031 expert_0 61.527564 expert_1 61.731826 expert_2 58.656699
+Epoch 93, Val, Loss=4.2950 Acc=98.5172
+Epoch 93, Val, Loss=4.2950 Acc=98.5172
+Epoch 94, Loss=2.4016 Acc=100.0000: 100%|█████| 271/271 [00:26<00:00, 10.23it/s]
+Epoch 94, Loss=2.4016 Acc=100.0000
+Epoch 94, Loss=2.4016 Acc=100.0000
+cov 3922/5193 sys_acc 98.497978 exp_acc 95.751362 clf_acc 99.388065 exp_acc_alone 73.445022 clf_acc_alone 97.689197 val_loss 4.286010 expert_0 95.711018 expert_1 95.792032 expert_2 95.754672
+测试
+cov 4551/6573 sys_acc 74.942948 exp_acc 63.254198 clf_acc 80.136232 exp_acc_alone 60.200822 clf_acc_alone 69.648562 val_loss 7.000270 expert_0 63.141975 expert_1 62.619788 expert_2 63.896440
+Epoch 94, Val, Loss=4.2860 Acc=98.4980
+Epoch 94, Val, Loss=4.2860 Acc=98.4980
+Epoch 95, Loss=5.4200 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.02it/s]
+Epoch 95, Loss=5.4200 Acc=100.0000
+Epoch 95, Loss=5.4200 Acc=100.0000
+cov 3933/5193 sys_acc 98.517235 exp_acc 95.396810 clf_acc 99.516906 exp_acc_alone 73.040632 clf_acc_alone 97.689197 val_loss 4.206221 expert_0 95.257693 expert_1 95.052034 expert_2 95.907879
+测试
+cov 4507/6573 sys_acc 74.395253 exp_acc 61.084215 clf_acc 80.497003 exp_acc_alone 60.216035 clf_acc_alone 69.937624 val_loss 6.915768 expert_0 65.753402 expert_1 58.039201 expert_2 60.529969
+Epoch 95, Val, Loss=4.2062 Acc=98.5172
+Epoch 95, Val, Loss=4.2062 Acc=98.5172
+Epoch 96, Loss=0.2800 Acc=100.0000: 100%|█████| 271/271 [00:32<00:00,  8.22it/s]
+Epoch 96, Loss=0.2800 Acc=100.0000
+Epoch 96, Loss=0.2800 Acc=100.0000
+cov 3917/5193 sys_acc 98.382438 exp_acc 95.141051 clf_acc 99.438343 exp_acc_alone 72.578471 clf_acc_alone 97.689197 val_loss 4.338350 expert_0 94.047574 expert_1 96.321795 expert_2 95.011831
+测试
+cov 4481/6573 sys_acc 75.368934 exp_acc 64.244736 clf_acc 80.562373 exp_acc_alone 61.052792 clf_acc_alone 69.420356 val_loss 7.009480 expert_0 64.296063 expert_1 61.165032 expert_2 67.448661
+Epoch 96, Val, Loss=4.3383 Acc=98.3824
+Epoch 96, Val, Loss=4.3383 Acc=98.3824
+Epoch 97, Loss=2.4337 Acc=100.0000: 100%|█████| 271/271 [00:36<00:00,  7.50it/s]
+Epoch 97, Loss=2.4337 Acc=100.0000
+Epoch 97, Loss=2.4337 Acc=100.0000
+cov 3932/5193 sys_acc 98.478721 exp_acc 95.241856 clf_acc 99.516783 exp_acc_alone 72.520701 clf_acc_alone 97.727710 val_loss 4.242620 expert_0 96.304805 expert_1 95.359585 expert_2 93.954613
+测试
+cov 4545/6573 sys_acc 74.653887 exp_acc 61.489146 clf_acc 80.528051 exp_acc_alone 59.957401 clf_acc_alone 69.511639 val_loss 6.934335 expert_0 59.264481 expert_1 63.001467 expert_2 62.345660
+Epoch 97, Val, Loss=4.2426 Acc=98.4787
+Epoch 97, Val, Loss=4.2426 Acc=98.4787
+Epoch 98, Loss=2.7823 Acc=100.0000: 100%|█████| 271/271 [00:33<00:00,  8.15it/s]
+Epoch 98, Loss=2.7823 Acc=100.0000
+Epoch 98, Loss=2.7823 Acc=100.0000
+cov 3936/5193 sys_acc 98.709802 exp_acc 96.340478 clf_acc 99.466461 exp_acc_alone 73.926439 clf_acc_alone 97.708454 val_loss 4.308573 expert_0 95.674252 expert_1 95.787097 expert_2 97.578645
+测试
+cov 4513/6573 sys_acc 74.197475 exp_acc 59.854363 clf_acc 80.744514 exp_acc_alone 59.075004 clf_acc_alone 69.755059 val_loss 6.906916 expert_0 60.170680 expert_1 56.425390 expert_2 62.941158
+Epoch 98, Val, Loss=4.3086 Acc=98.7098
+Epoch 98, Val, Loss=4.3086 Acc=98.7098
+Epoch 99, Loss=2.7403 Acc=100.0000: 100%|█████| 271/271 [00:34<00:00,  7.96it/s]
+Epoch 99, Loss=2.7403 Acc=100.0000
+Epoch 99, Loss=2.7403 Acc=100.0000
+cov 3973/5193 sys_acc 98.286154 exp_acc 95.081952 clf_acc 99.270070 exp_acc_alone 72.886578 clf_acc_alone 97.746967 val_loss 4.275465 expert_0 95.116235 expert_1 95.490666 expert_2 94.673078
+测试
+cov 4521/6573 sys_acc 74.410467 exp_acc 60.672509 clf_acc 80.645873 exp_acc_alone 60.596379 clf_acc_alone 69.952837 val_loss 6.966513 expert_0 62.639090 expert_1 61.119064 expert_2 58.539929
+Epoch 99, Val, Loss=4.2755 Acc=98.2862
+Epoch 99, Val, Loss=4.2755 Acc=98.2862
+Epoch 100, Loss=0.8221 Acc=100.0000: 100%|████| 271/271 [00:31<00:00,  8.54it/s]
+Epoch 100, Loss=0.8221 Acc=100.0000
+Epoch 100, Loss=0.8221 Acc=100.0000
+Best Epoch 62, Best Val Acc=98.8831
+Best Epoch 62, Best Val Acc=98.8831
+cov 3915/5193 sys_acc 98.497978 exp_acc 95.461644 clf_acc 99.489142 exp_acc_alone 72.251107 clf_acc_alone 97.766224 val_loss 4.223903 expert_0 95.945903 expert_1 94.594552 expert_2 95.897387
+测试
+cov 4543/6573 sys_acc 74.836452 exp_acc 61.625610 clf_acc 80.739598 exp_acc_alone 62.330747 clf_acc_alone 69.648562 val_loss 7.021989 expert_0 60.122681 expert_1 63.111092 expert_2 61.593155
+Epoch 100, Val, Loss=4.2239 Acc=98.4980
+Epoch 100, Val, Loss=4.2239 Acc=98.4980
+Running Time: 2.8h, Estimated Time: 2.8h
+Running Time: 2.8h, Estimated Time: 2.8h
+Namespace(as_rgb=False, base_lr=0.01, dataset='organamnist', depth=3, download=False, eval_weights=None, gamma=0.5, gpu_ids='2', hidden_dim=512, init_weights=None, log_dir='./logs', loss_type='softmax', meta_batch_size=128, meta_epochs=100, meta_experts=3, meta_label='exp3_depth3_dim512', meta_lr1=0.0001, meta_lr2=0.001, meta_task_size=4, meta_test_batch_size=64, meta_val_batch_size=8, model_flag='resnet18', n_channels=1, n_cntx_pts=50, norm_type='frn', num_classes=11, p_out=0.1, phase='meta_train', pre_batch_size=128, pre_custom_momentum=0.9, pre_custom_weight_decay=0.0005, pre_epochs=100, pre_experts=6, pre_gamma=0.2, pre_lr=0.01, pre_step_size=30, resize=False, save_path='./logs/pre/organamnist/softmax/p0.1_seed0/preExp6_metaExp3//depth3_hid512/resnet18step5_gamma0.5_lr10.0001_lr20.001_epochs100_baselr0.01_updatestep10_stepsize5/250121_171324', seed=0, size=28, step_size=5, test_dataset='organcmnist', time_stamp_meta=None, time_stamp_pre='250120_085711', update_step=10)
+Namespace(as_rgb=False, base_lr=0.01, dataset='organamnist', depth=3, download=False, eval_weights=None, gamma=0.5, gpu_ids='2', hidden_dim=512, init_weights=None, log_dir='./logs', loss_type='softmax', meta_batch_size=128, meta_epochs=100, meta_experts=3, meta_label='exp3_depth3_dim512', meta_lr1=0.0001, meta_lr2=0.001, meta_task_size=4, meta_test_batch_size=64, meta_val_batch_size=8, model_flag='resnet18', n_channels=1, n_cntx_pts=50, norm_type='frn', num_classes=11, p_out=0.1, phase='meta_train', pre_batch_size=128, pre_custom_momentum=0.9, pre_custom_weight_decay=0.0005, pre_epochs=100, pre_experts=6, pre_gamma=0.2, pre_lr=0.01, pre_step_size=30, resize=False, save_path='./logs/pre/organamnist/softmax/p0.1_seed0/preExp6_metaExp3//depth3_hid512/resnet18step5_gamma0.5_lr10.0001_lr20.001_epochs100_baselr0.01_updatestep10_stepsize5/250121_171324', seed=0, size=28, step_size=5, test_dataset='organcmnist', time_stamp_meta=None, time_stamp_pre='250120_085711', update_step=10)
+cov 4556/6573 sys_acc 73.999696 exp_acc 58.948928 clf_acc 80.662860 exp_acc_alone 57.340636 clf_acc_alone 69.663776 val_loss 6.745222 expert_0 57.553936 expert_1 59.974078 expert_2 58.925963
+cov 4556/6573 sys_acc 73.999696 exp_acc 58.948928 clf_acc 80.662860 exp_acc_alone 57.340636 clf_acc_alone 69.663776 val_loss 6.745222 expert_0 57.553936 expert_1 59.974078 expert_2 58.925963
+
+Process finished with exit code 0
+
+250121_171324

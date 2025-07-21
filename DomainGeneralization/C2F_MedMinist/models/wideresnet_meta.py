@@ -1,0 +1,144 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from models.conv2d_mtl import Conv2dMtl
+
+class BasicBlockMtl(nn.Module):
+    def __init__(self, in_planes, out_planes, stride, dropRate=0.0, normalization_layer=nn.BatchNorm2d):
+        super(BasicBlockMtl, self).__init__()
+        self.bn1 = normalization_layer(in_planes)
+        self.relu1 = nn.ReLU(inplace=True)
+        self.conv1 = Conv2dMtl(in_planes, out_planes, kernel_size=3, stride=stride,
+                               padding=1, bias=False)
+        self.bn2 = normalization_layer(out_planes)
+        self.relu2 = nn.ReLU(inplace=True)
+        self.conv2 = Conv2dMtl(out_planes, out_planes, kernel_size=3, stride=1,
+                               padding=1, bias=False)
+        self.droprate = dropRate
+        self.equalInOut = (in_planes == out_planes)
+        self.convShortcut = (not self.equalInOut) and Conv2dMtl(in_planes, out_planes, kernel_size=1, stride=stride,
+                                                                padding=0, bias=False) or None
+    def forward(self, x):
+        if not self.equalInOut:
+            x = self.relu1(self.bn1(x))
+        else:
+            out = self.relu1(self.bn1(x))
+        out = self.relu2(self.bn2(self.conv1(out if self.equalInOut else x)))
+        if self.droprate > 0:
+            out = F.dropout(out, p=self.droprate, training=self.training)
+        out = self.conv2(out)
+        return torch.add(x if self.equalInOut else self.convShortcut(x), out)
+
+class BasicBlock(nn.Module):
+    def __init__(self, in_planes, out_planes, stride, dropRate=0.0, normalization_layer=nn.BatchNorm2d):
+        super(BasicBlock, self).__init__()
+        self.bn1 = normalization_layer(in_planes)
+        self.relu1 = nn.ReLU(inplace=True)
+        self.conv1 = nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
+                               padding=1, bias=False)
+        self.bn2 = normalization_layer(out_planes)
+        self.relu2 = nn.ReLU(inplace=True)
+        self.conv2 = nn.Conv2d(out_planes, out_planes, kernel_size=3, stride=1,
+                               padding=1, bias=False)
+        self.droprate = dropRate
+        self.equalInOut = (in_planes == out_planes)
+        self.convShortcut = (not self.equalInOut) and nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride,
+                                                                padding=0, bias=False) or None
+    def forward(self, x):
+        if not self.equalInOut:
+            x = self.relu1(self.bn1(x))
+        else:
+            out = self.relu1(self.bn1(x))
+        out = self.relu2(self.bn2(self.conv1(out if self.equalInOut else x)))
+        if self.droprate > 0:
+            out = F.dropout(out, p=self.droprate, training=self.training)
+        out = self.conv2(out)
+        return torch.add(x if self.equalInOut else self.convShortcut(x), out)
+
+
+class NetworkBlock(nn.Module):
+    def __init__(self, nb_layers, in_planes, out_planes, block, stride, dropRate=0.0, normalization_layer=nn.BatchNorm2d):
+        super(NetworkBlock, self).__init__()
+        self.layer = self._make_layer(block, in_planes, out_planes, nb_layers, stride, dropRate, normalization_layer)
+    def _make_layer(self, block, in_planes, out_planes, nb_layers, stride, dropRate, normalization_layer):
+        layers = []
+        for i in range(int(nb_layers)):
+            layers.append(block(i == 0 and in_planes or out_planes, out_planes, i == 0 and stride or 1, dropRate, normalization_layer))
+        return nn.Sequential(*layers)
+    def forward(self, x):
+        return self.layer(x)
+
+
+class WideResNetBaseMtl(nn.Module):
+    # WRN without final dense layer ("feature extractor")
+    def __init__(self, depth, n_channels, widen_factor=1, dropRate=0.0, norm_type='batchnorm', mtl=False):
+        super(WideResNetBaseMtl, self).__init__()
+        self.normalization_layer = nn.BatchNorm2d if norm_type=='batchnorm' else FilterResponseNorm_layer
+        nChannels = [16, 16 * widen_factor, 32 * widen_factor, 64 * widen_factor]
+        assert ((depth - 4) % 6 == 0)
+        n = (depth - 4) / 6
+        if mtl:
+            print('**********************')
+            self.Conv2d = Conv2dMtl
+            block = BasicBlockMtl
+        else:
+            print('=======================')
+            self.Conv2d = nn.Conv2d
+            block = BasicBlock
+
+        # block = BasicBlock
+        # 1st conv before any network block
+        self.conv1 = self.Conv2d(n_channels, nChannels[0], kernel_size=3, stride=1,
+                               padding=1, bias=False)
+        # 1st block
+        self.block1 = NetworkBlock(n, nChannels[0], nChannels[1], block, 1, dropRate, self.normalization_layer)
+        # 2nd block
+        self.block2 = NetworkBlock(n, nChannels[1], nChannels[2], block, 2, dropRate, self.normalization_layer)
+        # 3rd block
+        self.block3 = NetworkBlock(n, nChannels[2], nChannels[3], block, 2, dropRate, self.normalization_layer)
+        # global average pooling and classifier
+        self.bn1 = self.normalization_layer(nChannels[3])
+        self.relu = nn.ReLU(inplace=True)
+        self.nChannels = nChannels[3]
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+            elif isinstance(m, nn.BatchNorm2d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+            elif isinstance(m, nn.Linear):
+                m.bias.data.zero_()
+
+    def forward(self, x):
+        out = self.conv1(x)
+        out = self.block1(out)
+        out = self.block2(out)
+        out = self.block3(out)
+        out = self.relu(self.bn1(out))
+        out = F.avg_pool2d(out, 8)
+        out = out.view(-1, self.nChannels)
+        return out
+
+
+# From: https://raw.githubusercontent.com/izmailovpavel/neurips_bdl_starter_kit/main/pytorch_models.py
+class FilterResponseNorm_layer(nn.Module):
+    def __init__(self, num_filters, eps=1e-6):
+        super(FilterResponseNorm_layer, self).__init__()
+        self.eps = eps
+        par_shape = (1, num_filters, 1, 1)  # [1,C,1,1]
+        self.tau = torch.nn.Parameter(torch.zeros(par_shape))
+        self.beta = torch.nn.Parameter(
+            torch.zeros(par_shape))
+        self.gamma = torch.nn.Parameter(
+            torch.ones(par_shape))
+
+    def forward(self, x):
+        nu2 = torch.mean(torch.square(x), dim=[2, 3], keepdim=True)
+        x = x * 1 / torch.sqrt(nu2 + self.eps)
+        y = self.gamma * x + self.beta
+        z = torch.max(y, self.tau)
+        return z
+
+
+
