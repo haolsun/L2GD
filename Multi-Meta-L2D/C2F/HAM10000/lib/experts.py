@@ -1,0 +1,153 @@
+import random
+from itertools import combinations
+
+import numpy as np
+
+from HAM10000.lib.dataset import coarse2sparse
+
+
+class synth_expert:
+    '''
+    simple class to describe our synthetic expert on CIFAR-10
+    ----
+    k: number of classes expert can predict
+    n_classes: number of classes (10+1 for CIFAR-10)
+    '''
+    def __init__(self, k, n_classes):
+        self.k = k
+        self.n_classes = n_classes
+
+    def predict(self, input, labels):
+        batch_size = labels.size()[0]  # batch_size
+        outs = [0] * batch_size
+        for i in range(0, batch_size):
+            if labels[i].item() < self.k:
+                outs[i] = labels[i].item()
+            else:
+                prediction_rand = random.randint(0, self.n_classes - 1)
+                outs[i] = prediction_rand
+        return outs
+
+
+class synth_expert2:
+    def __init__(self, classes_oracle, n_classes=10, p_in=1.0, p_out=0.1):
+        '''
+        class to model the non-overlapping synthetic experts
+
+        The expert predicts correctly for classes k1 (inclusive) to k2 (exclusive), and
+        random across the total number of classes for other classes outside of [k1, k2).
+
+        For example, an expert could be correct for classes 2 (k1) to 4 (k2) for CIFAR-10.
+
+        '''
+        self.classes_oracle = classes_oracle
+        self.p_in = p_in
+        self.p_out = p_out
+        self.n_classes = n_classes
+
+    # expert correct in [k1, k2) classes with prob. p_in; correct on other classes with prob. p_out
+    def __call__(self, input, labels, label_sparse=None):
+        batch_size = labels.size()[0]
+        outs = [0] * batch_size
+        for i in range(0, batch_size):
+            if labels[i].item() == self.classes_oracle:
+                coin_flip = np.random.binomial(1, self.p_in)
+                if coin_flip == 1:
+                    outs[i] = labels[i].item()
+                if coin_flip == 0:
+                    outs[i] = random.randint(0, self.n_classes - 1)
+            else:
+                coin_flip = np.random.binomial(1, self.p_out)
+                if coin_flip == 1:
+                    outs[i] = labels[i].item()
+                if coin_flip == 0:
+                    outs[i] = random.randint(0, self.n_classes - 1)
+        return outs
+
+
+# expert correct in class_oracle with prob. p_in; correct on other classes with prob. p_out
+class SyntheticExpertOverlap():
+    def __init__(self, classes_oracle, n_classes=10, p_in=1.0, p_out=0.1):
+        self.expert_static = True
+        self.classes_oracle = classes_oracle
+        if isinstance(self.classes_oracle, int):
+            self.classes_oracle = [self.classes_oracle]
+        # if self.class_oracle is None:
+        #     self.class_oracle = random.randint(0, n_classes-1)
+        #     self.expert_static = False
+        self.n_classes = n_classes
+        self.p_in = p_in
+        self.p_out = p_out
+
+    # def resample(self):
+    #     if not self.expert_static:
+    #         self.class_oracle = random.randint(0, self.n_classes-1)
+
+    def __call__(self, images, labels, labels_sparse=None):
+        batch_size = labels.size()[0]
+        outs = [0] * batch_size
+        for i in range(0, batch_size):
+            if labels[i].item() in self.classes_oracle:
+                coin_flip = np.random.binomial(1, self.p_in)
+                if coin_flip == 1:
+                    outs[i] = labels[i].item()
+                if coin_flip == 0:
+                    outs[i] = random.randint(0, self.n_classes-1)
+            else:
+                coin_flip = np.random.binomial(1, self.p_out)
+                if coin_flip == 1:
+                    outs[i] = labels[i].item()
+                if coin_flip == 0:
+                    outs[i] = random.randint(0, self.n_classes-1)
+        return outs
+
+
+class Cifar20SyntheticExpert():
+    def __init__(self, classes_coarse=None, n_classes=20, p_in=1.0, p_out=0.1, n_oracle_subclass=4, n_oracle_superclass=5):
+        '''
+        n_oracle_subclass : number of sparse/sub-classes expert is oracle at for a given coarse/super-class
+        '''
+        self.expert_static = True
+        self.classes_coarse = classes_coarse
+        self.n_oracle_subclass = n_oracle_subclass
+        self.n_oracle_superclass = n_oracle_superclass
+        self.n_classes = n_classes
+        if self.classes_coarse is None:
+            self.classes_coarse = np.random.choice(np.arange(self.n_classes), size=self.n_oracle_superclass, replace=False)
+            self.expert_static = False
+        # Ensures we select n_oracle_subclass per coarse class
+        indices_sparse = np.vstack([np.random.choice(np.arange(5), size=self.n_oracle_subclass, replace=False) for _ in range(len(self.classes_coarse))])
+        self.sparse_classes_oracle = coarse2sparse(self.classes_coarse)[np.arange(len(self.classes_coarse))[:,None], indices_sparse].flatten()
+
+        self.p_in = p_in
+        self.p_out = p_out
+
+    # def resample(self):
+    #     if not self.expert_static:
+    #         self.classes_coarse = np.random.choice(np.arange(self.n_classes), size=self.n_oracle_superclass, replace=False)
+    #         indices_sparse = np.vstack([np.random.choice(np.arange(5), size=self.n_oracle_subclass, replace=False) for _ in range(len(self.classes_coarse))])
+    #         self.sparse_classes_oracle = coarse2sparse(self.classes_coarse)[np.arange(len(self.classes_coarse))[:,None], indices_sparse].flatten()
+
+    def __call__(self, images, labels, labels_sparse):
+        batch_size = labels.size()[0]
+        outs = [0] * batch_size
+        for i in range(0, batch_size):
+            if labels[i].item() in self.classes_coarse:
+                if labels_sparse[i].item() in self.sparse_classes_oracle:
+                    coin_flip = np.random.binomial(1, self.p_in)
+                    if coin_flip == 1:
+                        outs[i] = labels[i].item()
+                    if coin_flip == 0:
+                        outs[i] = random.randint(0, self.n_classes-1)
+                        # outs[i] = random.choice(list(set(range(self.n_classes)) - set(self.classes_coarse)))
+                else:
+                    coin_flip = np.random.binomial(1, self.p_out)
+                    if coin_flip == 1:
+                        outs[i] = labels[i].item()
+                    if coin_flip == 0:
+                        outs[i] = random.randint(0, self.n_classes-1)
+                        # outs[i] = random.choice(list(set(range(self.n_classes)) - set(self.classes_coarse)))
+            else: # predict randomly if not in superclasses, OR should this be anti-oracle (exclude true class) ?
+                outs[i] = random.randint(0, self.n_classes-1)
+                # outs[i] = random.choice(list(set(range(self.n_classes)) - set(self.classes_coarse)))
+        return outs
